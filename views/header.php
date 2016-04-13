@@ -80,7 +80,7 @@
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <a href="user">User</a>
+          <a href="user">TRANG CÁ NHÂN</a>
           <div class="d-menu-content"></div>
         </li>
       </ul>
