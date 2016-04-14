@@ -18,8 +18,8 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="<?php echo URL; ?>/public/js/common.js"></script>
-<script src="<?php echo URL; ?>/public/js/bjqs-1.3.js"></script>
+<script src="<?php echo URL; ?>public/js/common.js"></script>
+<script src="<?php echo URL; ?>public/js/bjqs-1.3.js"></script>
 
 <script class="secret-source">
   jQuery(document).ready(function($) {

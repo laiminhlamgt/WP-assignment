@@ -84,6 +84,10 @@
           <a href="user">TRANG CÁ NHÂN</a>
           <div class="d-menu-content"></div>
         </li>
+        <li>
+          <a href="post">RAO TIN</a>
+          <div class="d-menu-content"></div>
+        </li>
       </ul>
     </div>
   </div>

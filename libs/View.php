@@ -6,7 +6,7 @@ class View {
     $this->error = 0;
   }
 
-  public function render($filename, $noIncludeHeaderAndFooter = false, $login = false) {
+  public function render($filename, $noIncludeHeaderAndFooter = false) {
     echo '<!DOCTYPE html><html><head>';
     require 'views/head.php';
     echo '</head><body>';
