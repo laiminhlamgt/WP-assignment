@@ -16,13 +16,14 @@
       <ul class="d-clearfix d-navbar-right">
         <li>
 
-          <?php if (Session::get('loggedIn') == false) {
+          <?php
+          if (Session::get('loggedIn') == false) {
             echo '<a href="login">ĐĂNG NHẬP <i class="fa fa-sign-in"></i></a>';
 
           } else {
-            echo '<a href="dashboard/logout">THOÁT <i class="fa fa-sign-in"></i></a>';
+            echo '<a href="login/logout">THOÁT <i class="fa fa-sign-in"></i></a>';
           }
-            ?>
+          ?>
 
         </li>
       </ul>
