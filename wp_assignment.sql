@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2016 at 06:16 AM
+-- Generation Time: Apr 16, 2016 at 04:03 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `wp_assignment`
 --
+CREATE DATABASE IF NOT EXISTS `wp_assignment` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `wp_assignment`;
 
 -- --------------------------------------------------------
 
