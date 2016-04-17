@@ -29,7 +29,7 @@ class Database extends PDO {
       $query->bindValue(":$key", $value);
     }
 
-    $query->execute();
+    return $query->execute();
   }
 
   public function update($table, $data, $where) {
@@ -48,7 +48,7 @@ class Database extends PDO {
       $query->bindValue(":$key", $value);
     }
 
-    $query->execute();
+    return $query->execute();
   }
 
   public function delete($table, $where, $limit = 1) {

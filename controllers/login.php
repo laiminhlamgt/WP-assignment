@@ -5,16 +5,15 @@ class Login extends Controller {
   public function __construct() {
     parent::__construct();
     Session::init();
-
-    $logged = Session::get('loggedIn');
-    if ($logged == true) {
-      Session::destroy();
-      header('Location: ../index');
-      exit;
-    }
   }
 
   public function index() {
+    $logged = Session::get('loggedIn');
+    if ($logged == true) {
+      header('Location: ./index');
+      exit;
+    }
+
     $this->view->title = 'Đăng nhập';
     $this->view->render('login/index');
   }

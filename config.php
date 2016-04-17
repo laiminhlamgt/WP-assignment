@@ -6,7 +6,7 @@ define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'wp_assignment');
+define('DB_NAME', 'wp_assignment_semi');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 

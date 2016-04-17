@@ -8,7 +8,7 @@ class LoginModel extends Model {
 
   public function login($email, $password) {
     $sql = 'select id,role from user
-      where username=:email and password=:password';
+      where email=:email and password=:password';
     $bindValue = array(
       'email' => $email,
       'password' => Hash::create('md5', $password, HASH_PASSWORD_KEY)
