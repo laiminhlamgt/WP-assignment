@@ -26,13 +26,18 @@
 
           <?php
           if (Session::get('loggedIn') == false) {
-            echo '<a href="login">ĐĂNG NHẬP <i class="fa fa-sign-in"></i></a>';
+            if (isset($this->isSearch)) {
+              echo '<a href="../login">ĐĂNG NHẬP';
+
+            } else {
+              echo '<a href="login">ĐĂNG NHẬP';
+            }
 
           } else {
-            echo '<a href="login/logout">THOÁT <i class="fa fa-sign-in"></i></a>';
+            echo '<a href="login/logout">THOÁT';
           }
           ?>
-
+          <i class="fa fa-sign-in"></i></a>
         </li>
       </ul>
     </div>
