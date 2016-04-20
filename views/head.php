@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mlam.css">
 
 <script src="<?php echo URL; ?>public/js/jquery.secret-source.min.js" charset="utf-8"></script>
-
+<script src="<?php echo URL; ?>public/js/jquery-1.12.2.min.js" charset="utf-8"></script>
 <?php
 
 }

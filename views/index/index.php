@@ -22,7 +22,9 @@
             <span>BÁN</span><span>THUÊ</span><span class="search-options-collapse">GẦN ĐÂY</span><span class="search-options-collapse">TẤT CẢ</span>
           </div>
           <div>
-            <input type="text" placeholder="Địa chỉ, Thành phố" style="color:#777"/><span><button onclick="location.href='search.html'" type="button" name="button"><i class="fa fa-search"></i><span hidden>&nbsp; TÌM</span></button></span>
+            <form id="search-form" action="search/search" method="get">
+              <input id="txt-search" name="content" type="text" placeholder="Địa chỉ, Thành phố" style="color:#777"/><span><button id="btn-search" type="button" name="button"><i class="fa fa-search"></i><span hidden>&nbsp; TÌM</span></button></span>
+            </form>
           </div>
         </div>
       </div>

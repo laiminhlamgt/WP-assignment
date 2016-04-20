@@ -71,8 +71,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span data-role="facet-label">Nâng Cao</span><i class="caret"></i>
           </a>
-            <div class="dropdown-menu" style="background-color:white">
-              <div class="row m-container">
+            <div class="dropdown-menu" style="background-color:white" id="settingsMenu">
+              <div class="row m-container" style="background-color:white">
                 <div class="col-md-3">
                   <h4>Loại Bất Động Sản</h4>
                   <input type="radio" name="property_type" value="pt0" checked> Bất Kỳ<br>
@@ -163,150 +163,105 @@
 <!-- Start of search result + left detail -->
 <div class="m-container">
   <div class="row m-search-overview">
-  <div class="col-md-9 m-config-search-result">
-    <h2 style="color:#bd1000;text-align:center;">Đăng tin bất động sản</h2>
-
-    <div class="l-info-box">
-      <h3 class="l-title">Thông tin cơ bản</h3>
-      <div class="l-info-item">
-        <label>Loại nhà đất</label>
-        <select class="l-input l-input-select" name="loainhadat">
-          <option value="-1">--Chọn loại nhà đất--</option>
-          <option value="1">--Cho thuê căn hộ chung cư--</option>
-          <option value="2">--Cho thuê nhà riêng--</option>
-          <option value="3">--Cho thuê nhà mặt phố--</option>
-          <option value="4">--Cho thuê nhà trọ, phòng trọ--</option>
-          <option value="5">--Cho thuê văn phòng--</option>
-        </select>
+    <div class="col-md-9 m-config-search-result">
+      <h4>Tp HCM, Quận 10</h4>
+      <a href="#">Quận 10</a> <span class="glyphicon glyphicon-menu-right"></span> <a href="#">Phường 14</a>
+      <br>
+      <br>
+      <ul>
+      <li>2.345 Kết Qủa Sắp Xếp Theo</li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:orange">
+          <span data-role="facet-label" style="color:#FF9009">Mới Cập Nhật</span><i class="caret" style="color:#FF9009"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#" style="color:#FF9009">Giá Thấp Nhất</a></li>
+          <li><a href="#" style="color:#FF9009">Giá Cao Nhất</a></li>
+          <li><a href="#" style="color:#FF9009">Nhà Mở</a></li>
+          <li><a href="#" style="color:#FF9009">Giá Ưu Đãi</a></li>
+        </ul>
+      </li>
+      <li class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:orange">
+          <span data-role="facet-label" style="color:#FF9009">Liệt Kê</span><i class="caret" style="color:#FF9009"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#" style="color:#FF9009">Bản Đồ</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="thumbnail" style="margin-top: 20px;">
+      <div class="image">
+        <img src="<?php echo URL; ?>public/images/image-search-1.jpg" alt="nha" class="image"/>
       </div>
-      <div class="l-info-item">
-        <label>Vị trí</label>
-        <select class="l-input l-input-select" name="quanhuyen">
-          <option value="-1">-- Chọn Quận/Huyện --</option>
-          <option value="1">-- Quận 1 --</option>
-          <option value="2">-- Quận 2 --</option>
-          <option value="3">-- Quận 3 --</option>
-          <option value="4">-- Quận 4 --</option>
-        </select>
-        <select class="l-input l-input-select" name="phuongxa">
-          <option value="-1">-- Chọn Phường/Xã --</option>
-        </select>
-        <select class="l-input l-input-select" name="duongpho">
-          <option value="-1">-- Chọn Đường/Phố --</option>
-        </select>
-        <select class="l-input l-input-select" name="loaiduan">
-          <option value="-1">-- Chọn loại dự án --</option>
-        </select>
-      </div>
-      <div class="l-info-item">
-        <div class="l-info-item-col-3">
-          <label>Giá</label>
-          <input type="text" name="gia" class="l-input">
+      <div class="caption">
+        <div class="info">
+          <p class="address">268 Lý Thường Kiệt, P.14, Q.10</p>
+          <p class="cost">2.500.000đ</p>
+          <p class="other">2 phòng ngủ</p>
         </div>
-        <div class="l-info-item-col-3">
-          <label>Đơn vị</label>
-          <select class="l-input" name="donvi">
-            <option value="-1">-- Thỏa thuận --</option>
-          </select>
-        </div>
-        <div class="l-info-item-col-3">
-          <label>Diện tích</label>
-          <input type="text" name="dientich" class="l-input">
-        </div>
-        <div class="l-clearer">
+        <div class="info-bottom">
+          <span class="uploadOwner">Lai Minh Lam</span>
         </div>
       </div>
-      <div class="l-info-item">
-        <label>Địa chỉ</label>
-        <input type="text" name="diadiem" value="" class="l-input l-input-long">
+      <a href="detail.html" class="link"></a>
+      <div class="clearer">
       </div>
     </div>
-    <!-- Thong tin khac -->
-    <div class="l-info-box">
-      <h3 class="l-title">Thông tin khác</h3>
-      <div class="l-info-item">
-        <div class="l-info-item-col-3">
-          <label>Mặt tiền</label>
-          <input type="text" name="mattien" class="l-input">
+    <div class="thumbnail">
+      <div class="image">
+        <img src="<?php echo URL; ?>public/images/image-search-2.jpg" alt="nha" class="image"/>
+      </div>
+      <div class="caption">
+        <div class="info">
+          <p class="address">268 Lý Thường Kiệt, P.14, Q.10</p>
+          <p class="cost">2.500.000đ</p>
+          <p class="other">2 phòng ngủ</p>
         </div>
-        <div class="l-info-item-col-3">
-          <label>Đường trước nhà</label>
-          <input type="text" name="duongtruocnha" class="l-input">
-        </div>
-        <div class="l-info-item-col-3">
-          <label>Hướng BĐS</label>
-          <select class="l-input" name="huongbds">
-            <option value="-1">KXĐ</option>
-          </select>
-        </div>
-        <div class="l-clearer">
+        <div class="info-bottom">
+          <span class="uploadOwner">Lai Minh Lam</span>
         </div>
       </div>
-      <div class="l-info-item">
-        <div class="l-info-item-col-3">
-          <label>Số tầng</label>
-          <input type="text" name="sotang" class="l-input">
-        </div>
-        <div class="l-info-item-col-3">
-          <label>Số phòng</label>
-          <input type="text" name="sophong" class="l-input">
-        </div>
-        <div class="l-info-item-col-3">
-          <label>Số toilet</label>
-          <input type="text" name="sotoilet" class="l-input">
-        </div>
-        <div class="l-clearer">
-        </div>
+      <a href="detail.html" class="link"></a>
+      <div class="clearer">
       </div>
     </div>
-    <!-- Mo ta chi tiet -->
-    <div class="l-info-box">
-      <h3 class="l-title">Mô tả chi tiết</h3>
-      <p class="l-input-required">(Vui lòng gõ tiếng Việt có dấu để tin đăng được kiểm duyệt nhanh hơn)</p>
-      <div class="l-info-item">
-        <label>Tiêu đề</label>
-        <input type="text" name="diadiem" value="" class="l-input l-input-long">
+    <div class="thumbnail">
+      <div class="image">
+        <img src="<?php echo URL; ?>public/images/image-search-3.jpg" alt="nha" class="image"/>
       </div>
-      <div class="l-info-item">
-        <label>Nội dung mô tả</label>
-        <textarea name="noidungmota" rows="10" cols="30" class="l-input l-input-long">
-        </textarea>
+      <div class="caption">
+        <div class="info">
+          <p class="address">268 Lý Thường Kiệt, P.14, Q.10</p>
+          <p class="cost">2.500.000đ</p>
+          <p class="other">2 phòng ngủ</p>
+        </div>
+        <div class="info-bottom">
+          <span class="uploadOwner">Lai Minh Lam</span>
+        </div>
       </div>
-      <div class="l-info-item">
-        <label>Cập nhật hình ảnh </label>
-        <p class="l-input-required">(Bạn có thể nhập tối đa 6 ảnh và mỗi ảnh nặng không quá 4MB)</p>
-        <input type="file" name="file">
-      </div>
-    </div>
-    <!-- Thong tin lien he -->
-    <div class="l-info-box">
-      <h3 class="l-title">Thông tin liên hệ</h3>
-      <div class="l-info-item">
-        <label>Họ tên</label>
-        <input type="text" name="hoten" value="" class="l-input l-input-long">
-      </div>
-      <div class="l-info-item">
-        <label>Địa chỉ</label>
-        <input type="text" name="diachi" value="" class="l-input l-input-long">
-      </div>
-      <div class="l-info-item">
-        <label>Điện thoại</label>
-        <input type="text" name="dienthoai" value="" class="l-input l-input-long">
-      </div>
-      <div class="l-info-item">
-        <label>Di động</label>
-        <input type="text" name="didong" value="" class="l-input l-input-long">
-      </div>
-      <div class="l-info-item">
-        <label>Email</label>
-        <input type="text" name="email" value="" class="l-input l-input-long">
+      <a href="detail.html" class="link"></a>
+      <div class="clearer">
       </div>
     </div>
-
-    <div class="l-btnsubmit">
-      <input type="submit" name="submit" value="Đăng tin" class="l-input l-btn-primary">
+    <div class="thumbnail">
+      <div class="image">
+        <img src="<?php echo URL; ?>public/images/image-search-4.jpg" alt="nha" class="image"/>
+      </div>
+      <div class="caption">
+        <div class="info">
+          <p class="address">268 Lý Thường Kiệt, P.14, Q.10</p>
+          <p class="cost">2.500.000đ</p>
+          <p class="other">2 phòng ngủ</p>
+        </div>
+        <div class="info-bottom">
+          <span class="uploadOwner">Lai Minh Lam</span>
+        </div>
+      </div>
+      <a href="detail.html" class="link"></a>
+      <div class="clearer">
+      </div>
     </div>
-
   </div>
   <!--start col-md-3-->
   <div class="col-md-3 ">
@@ -528,5 +483,4 @@
     </div> <!-- end of detail left-->
   <!-- end col-md-3-->
   </div>
-</div>
-<!-- End of serch result-->
+</div><!-- End of serch result-->

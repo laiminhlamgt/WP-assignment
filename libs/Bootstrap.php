@@ -3,9 +3,7 @@
 class Bootstrap {
 
   public function __construct() {
-    // if URL is http://localhost/WP-assignment/login/
-    // $_GET['url'] return login/
-    $url = isset($_GET['url']) ? $_GET['url'] : null;
+    $url = $this->_getURL();
 
     // In case URL is http://localhost/WP-assignment/
     // $url is null, then return home page
@@ -23,8 +21,9 @@ class Bootstrap {
     // 'login' is a controller name
     // 'doLogin' is the function name that will be called
     $url = explode('/', $url);
+    $controllerName = $url[0];
 
-    $file = 'controllers/' . $url[0] . '.php';
+    $file = 'controllers/' . $controllerName . '.php';
     // check the controller file is exists
     if (file_exists($file)) {
       require $file;
@@ -35,20 +34,29 @@ class Bootstrap {
       return false;
     }
 
-    $controller = new $url[0];
+    $controller = new $controllerName;
     // load model if exists
-    $controller->loadModel($url[0]);
+    $controller->loadModel($controllerName);
 
     // $url[0] is a controller name
     // $url[1] is a function name of the controller
     // $url[2] is parameters
     if (isset($url[1])) {
-      if (method_exists($controller, $url[1])) {
+      if (preg_match('/\?/', $url[1])) {
+        // if $url[1] is search?content=abc
+        // sub $url[1] to search
+        $methodName = substr($url[1], 0, strpos($url[1], '?'));
+
+      } else {
+        $methodName = $url[1];
+      }
+
+      if (method_exists($controller, $methodName)) {
         if (isset($url[2])) {
-          $controller->{$url[1]}($url[2]);
+          $controller->{$methodName}($url[2]);
 
         } else {
-          $controller->{$url[1]}();
+          $controller->{$methodName}();
         }
 
       } else {
@@ -78,11 +86,13 @@ class Bootstrap {
     $controller->index();
   }
 
-  // public function error() {
-  //   require 'controllers/error.php';
-  //   $controller = new Error();
-  //   $controller->index();
-  // }
+  private function _getURL() {
+    $url = $_SERVER['REQUEST_URI'];
+    // remove '/WP-assignment/' from $url
+    $url = str_replace(ROOT_FOLDER, '', $url);
+
+    return $url;
+  }
 
 }
 

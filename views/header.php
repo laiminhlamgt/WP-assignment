@@ -9,8 +9,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- Lam them <img> -->
-      <a href="index"><img src="<?php echo URL; ?>/public/images/logo.png" alt="logo" /></a>
+
+      <?php if (isset($this->isSearch)) {
+        echo '<a href="../index">';
+
+      } else {
+        echo '<a href="index">';
+      }
+      ?>
+        <img src="<?php echo URL; ?>/public/images/logo.png" alt="logo" />
+      </a>
     </div>
     <div class="d-navbar-login">
       <ul class="d-clearfix d-navbar-right">
@@ -77,15 +85,36 @@
           </div>
         </li>
         <li>
-          <a href="help">TRỢ GIÚP</a>
+          <?php if (isset($this->isSearch)) {
+            echo '<a href="../help">';
+
+          } else {
+            echo '<a href="help">';
+          }
+          ?>
+          TRỢ GIÚP</a>
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <a href="user">TRANG CÁ NHÂN</a>
+          <?php if (isset($this->isSearch)) {
+            echo '<a href="../user">';
+
+          } else {
+            echo '<a href="user">';
+          }
+          ?>
+          TRANG CÁ NHÂN</a>
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <a href="post">RAO TIN</a>
+          <?php if (isset($this->isSearch)) {
+            echo '<a href="../post">';
+
+          } else {
+            echo '<a href="post">';
+          }
+          ?>
+          RAO TIN</a>
           <div class="d-menu-content"></div>
         </li>
       </ul>
