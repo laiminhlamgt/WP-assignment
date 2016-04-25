@@ -10,14 +10,17 @@ class Database extends PDO {
   }
 
   public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+    
     $query = $this->prepare($sql);
     foreach ($array as $key => $value) {
       $query->bindValue(":$key", $value);
     }
     $query->execute();
+    
 
     return $query->fetchAll($fetchMode);
   }
+
 
   public function insert($table, $data) {
     $fieldNames = '`' . implode('`, `', array_keys($data)) . '`';
@@ -28,8 +31,13 @@ class Database extends PDO {
     foreach ($data as $key => $value) {
       $query->bindValue(":$key", $value);
     }
-
-    return $query->execute();
+    //Duong Tran 2016 0424
+    //change the output that get both status and error message.
+    ob_start();
+    $result->successful = $query->execute(); 
+    $result->message = $query->errorInfo(); 
+    ob_end_clean();
+    return $result;
   }
 
   public function update($table, $data, $where) {
@@ -48,7 +56,13 @@ class Database extends PDO {
       $query->bindValue(":$key", $value);
     }
 
-    return $query->execute();
+    //Duong Tran 2016 0424
+    //change the output that get both status and error message.
+    ob_start();
+    $result->successful = $query->execute(); 
+    $result->message = $query->errorInfo(); 
+    ob_end_clean();
+    return $result;
   }
 
   public function delete($table, $where, $limit = 1) {

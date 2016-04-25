@@ -12,11 +12,11 @@ class SignupModel extends Model {
       'password' => Hash::create('md5', $password, HASH_PASSWORD_KEY),
     );
 
-    $inserted = $this->db->insert('user', $bindValue);
-    if ($inserted) {
+    $result = $this->db->insert('user', $bindValue);
+    if ($result->successful ) {
       header('location: ../index');
 
-    } else {
+    } else { //Duog Tran noted that when the registration failed system better show message instead direnct page.  
       header('location: ../signup');
     }
 

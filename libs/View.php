@@ -4,13 +4,15 @@ class View {
 
   function __construct() {
     $this->error = 0;
+    $this->error_message = '';
+    $this->status = true;
   }
 
   public function render($filename, $noIncludeHeaderAndFooter = false) {
     echo '<!DOCTYPE html><html><head>';
-    require 'views/head.php';
     echo '</head><body>';
-
+    require 'views/head.php';
+    
     if ($noIncludeHeaderAndFooter == true) {
       require 'views/' . $filename . '.php';
 
@@ -22,6 +24,57 @@ class View {
 
     echo '</body></html>';
 
+  }
+
+  //Duong Tran 2016 0423
+  //the dashboard_render is used by admin views.
+  public function dashboard_render($fileName, $fileDir = DashboardFileDirEnum::ROOT, $isPartialView = false)
+  {
+    //check that only admin can render dashboard. 
+    if(Session::get('loggedIn') != true || Session::get('role') != RoleEnum::Admin)
+    {
+      //if this is not browser full view request
+      if($isPartialView == false)
+      {
+        header('Location: login');
+        exit;
+      }
+      else // else, if this is partialview content request
+      {
+        echo 'Your session has timed out or you have no access right for this request, please login';
+        exit;
+      }
+    }
+
+    if($isPartialView)
+    {
+      require $fileDir . $fileName . '.php';  
+    }
+    else
+    {
+      echo '<!DOCTYPE html><html><head>';
+          //generate configured value to use in js file
+      echo '<script>';
+      echo 'var Define_URL = ' . '"' . URL . '";';
+      echo 'var Define_Dashboard_ROOT = ' . '"' . DashboardFileDirEnum::ROOT . '";';
+      echo 'console.log("hahaha  " + Define_URL);';
+      echo '</script>';
+
+      require DashboardFileDirEnum::ROOT . 'head.php';
+      echo '</head><body id="d-db-body">';
+      require DashboardFileDirEnum::ROOT . 'top-menu.php';
+      require DashboardFileDirEnum::ROOT . 'main-menu.php';
+      echo '<div class="mainContenter">';
+      echo '<div id="mainContent">';
+      require $fileDir . $fileName . '.php';
+      echo '</div>';
+      echo '</div>';
+
+      require DashboardFileDirEnum::ROOT . 'modal-view.php';
+      
+      //require 'views/dashboard/popup.php';
+      echo '</body></html>';
+    }
   }
 
 }

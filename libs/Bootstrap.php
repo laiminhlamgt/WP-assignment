@@ -4,7 +4,7 @@ class Bootstrap {
 
   public function __construct() {
     $url = $this->_getURL();
-
+// echo $_POST['email'] .' ' .Hash::create('md5', $_POST['password'], HASH_PASSWORD_KEY) ;die();
     // In case URL is http://localhost/WP-assignment/
     // $url is null, then return home page
     if ($url == null) {
@@ -13,7 +13,6 @@ class Bootstrap {
       $controller->index();
       return false;
     }
-
     // remove the last slash in $url if exist ('login/doLogin/' become 'login/doLogin')
     $url = rtrim($url, '/');
     // if $url is login/doLogin
@@ -23,6 +22,7 @@ class Bootstrap {
     $url = explode('/', $url);
     $controllerName = $url[0];
 
+    
     $file = 'controllers/' . $controllerName . '.php';
     // check the controller file is exists
     if (file_exists($file)) {
@@ -30,7 +30,8 @@ class Bootstrap {
 
     } else {
       // if controller not found, return error
-      $this->_error();
+       $this->_error();
+      
       return false;
     }
 

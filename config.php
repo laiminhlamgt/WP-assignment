@@ -1,8 +1,8 @@
 <?php
 
 // Always provide a TRAILING SLASH (/) after a path
-define('URL', 'http://localhost/WP-assignment/');
-define('ROOT_FOLDER', '/WP-assignment/');
+define('URL', 'http://localhost:81/laptrinhweb/assignment/wp-assignment/');
+define('ROOT_FOLDER', '/laptrinhweb/assignment/wp-assignment/');
 define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');

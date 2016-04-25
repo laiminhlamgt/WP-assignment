@@ -1,0 +1,339 @@
+*{
+  padding:0;
+  margin:0;
+  /*transition: all .3s;*/
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body{
+	position:relative;
+	width:100%;
+	min-width: 1500px;
+	background:#F6F6F6;
+}
+
+.d-db-top-menu{
+	width:100%;
+	height:80px;
+	
+	background: #E2E2E2; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FBFBFB, #E2E2E2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FBFBFB, #E2E2E2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FBFBFB, #E2E2E2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FBFBFB, #E2E2E2); /* Standard syntax */
+}
+
+.d-db-top-menu-item{
+	float:left;
+	width:20%;
+	height:100%;
+	display: table;
+
+}
+.d-db-top-menu-item > span{
+	display: table-cell;
+	vertical-align:middle;
+	text-align:center;
+	font-size:19px;
+	color:#808080;
+
+}
+.d-db-top-menu-item > span > a{
+	text-decoration: none;
+	color:#808080;
+}
+.d-db-top-menu-item > span > a:hover{
+	color:#000000;
+}
+.d-db-top-menu-logo{
+	display:block;
+	margin: 0 auto;
+	height:50px;
+	width:100px;
+	margin-top:15px;
+}
+
+
+.d-db-main-menu{
+	width:100%;
+	height:200px;
+	background:#3D3D3D;
+}
+
+.d-db-main-menu-container{
+	position:absolute;
+	height:100px;
+	width:100%;
+	min-width: 1500px;
+	margin-top:25px;
+	text-align:center;
+}
+.d-db-main-menu-item{
+	height:100px;
+	width:100px;
+	display:inline-block;
+	margin-left:150px;
+	margin-right:150px;
+	position:relative;
+}
+.d-db-main-menu-item-active, .d-db-main-menu-item:hover{
+	background: rgba(255,255,255,0.2);
+	border-radius:5px;
+
+}
+.d-db-main-menu-item-active:after{
+	border-color: transparent transparent white;
+    border-style: solid;
+    border-width: 20px;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 50%;
+    margin-left: -20px;
+    position: absolute;
+    top: 86%;
+    width: 0;
+    z-index:3000;
+}
+
+.d-db-main-menu-item > a{
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+}
+.d-db-main-menu-item > i{
+	position:absolute;
+	font-size:50px;
+	left:0;
+	right:0;
+	top:10px;
+	color:white;
+}
+.d-db-main-menu-item > span{
+	position:absolute;
+	color:white;
+	left:0;
+	right:0;
+	bottom:15px;
+	font-size:18px;
+}
+
+.mainContenter{
+	position: absolute;	
+	left: 50%;
+    transform: translateX(-50%)  translateY(-50px);
+	width: 95%;
+	min-width: 1400px;
+	max-width:	1800px;
+	border-radius:5px;
+	padding-bottom:50px;
+}
+
+
+#mainContent{
+	background:white;
+	border: 1px solid #B9B9B9;
+	min-height:1000px;
+	border-radius:5px;
+	padding:50px;
+}
+
+.d-db-chart-group{
+	
+	text-align:center;
+	width: 100%;
+	margin-top:50px;
+}
+
+
+.d-db-chart-item{
+	height:130px;
+	width: 35%;
+	background:orange;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;	
+	margin-bottom:20px;
+	font-size:30px;
+	line-height: 130px;
+	position:relative;
+	cursor: pointer;
+}
+.chart-can{
+
+	width: 800px;
+	margin:50px auto 0 auto;
+}
+
+#mainTable{
+	width:100%;
+	border-spacing: 0px;
+	border-right:1px solid #21b799;
+}
+
+#mainTable tr td{
+	background:#ededed;
+	border-left: 1px solid #21b799;
+	border-bottom: 1px solid #21b799;
+	color:#6B6B6B;
+	
+}
+#mainTable tr th{
+	background: #21b799;
+	color:white;
+	border-left:1px solid #ededed;
+}
+
+#mainTable tr th, #mainTable tr td{
+	padding:15px;
+}
+
+#mainTable tr:hover td{
+	background: white;
+}
+
+#mainTable .fa-pencil-square-o{
+	cursor: pointer;
+}
+
+#mainTable .fa-pencil-square-o:hover{
+	color:black;
+}
+
+#d-db-bg-cover{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:rgba(0,0,0,0.5);
+	z-index:10000;
+	overflow-y:scroll;
+    overflow-x:auto;
+}
+
+#d-db-modal-view-container{
+	margin:0 auto;
+	background:white;
+	margin-top:150px;
+	margin-bottom:150px;
+	width:50%;
+	min-width:1200px;
+	min-height:200px;
+	border-radius:20px;
+	position:relative;
+	padding-top:30px;
+}
+
+.d-db-modal-view-options{
+	clear:both;
+	height:150px;
+	border-top:1px solid #21b799;
+	width: 100%;
+	text-align:center;
+	padding-top:25px;
+	cursor: pointer;
+}
+
+.d-db-modal-view-option{
+	height:100px;
+	width:200px;
+	display:inline-block;
+	position:relative;
+	line-height:100px;
+	font-size:32px;
+	color:white;
+	font-weight: bold;
+}
+
+.d-db-modal-view-option.option-color-green{
+	border: 1px solid #21b799;
+	background: #21b799;
+
+}
+.d-db-modal-view-option.option-color-green:hover{
+	background: white;
+	color: #21b799;
+}
+.d-db-modal-view-option.option-color-grey{
+	border:1px solid #6B6B6B;
+	background:#6B6B6B;
+}
+.d-db-modal-view-option.option-color-grey:hover{
+	background: white;
+	color: #6B6B6B;	
+}
+.d-db-modal-view-option.option-color-red{
+	border:1px solid #FF2A2A;
+	background:#FF2A2A;
+}
+.d-db-modal-view-option.option-color-red:hover{
+	background: white;
+	color: #FF2A2A;	
+}
+
+.d-db-edit-table tr td, .d-db-edit-table tr th {
+	padding:20px;
+}
+
+.d-db-edit-table.edit-table-center{
+	margin:0 auto;
+}
+
+.d-db-edit-table.edit-table-left{
+	width:45%;
+	float:left;
+}
+
+.d-db-edit-table.edit-table-right{
+	width:45%;
+	float:right;
+}
+
+.d-db-edit-form-title{
+	text-align:center;
+	background: #FFB200;
+	color:white;
+	font-size:40px;
+	line-height:45px;
+
+}
+
+.d-db-mainTable-options{
+	height:60px;
+	width: 100%;
+	text-align:right;
+	margin-bottom:30px;
+}
+
+
+.d-db-mainTable-option{
+	color:white;
+	height:60px;
+	display:inline-block;
+	border:1px solid #21b799;
+	background: #21b799;
+	font-size:22px;
+	line-height:55px;
+	text-align: center;
+	padding-left:30px;
+	padding-right:30px;
+	cursor:pointer;
+	
+}
+
+.d-db_mainTable-page{
+	padding:10px;
+	
+	
+}
+.d-db-mainTable-page-container{
+	float:right;
+	margin-top:30px;
+	font-size:20px;
+}

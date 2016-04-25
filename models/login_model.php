@@ -7,6 +7,7 @@ class LoginModel extends Model {
   }
 
   public function login($email, $password) {
+    
     $sql = 'select id,role from user
       where email=:email and password=:password';
     $bindValue = array(
@@ -17,6 +18,7 @@ class LoginModel extends Model {
     $data = $this->db->select($sql, $bindValue);
     // print_r($data); die; //$query->rowCount();
     $count = count($data);
+    // echo $count; die;
     if ($count > 0) {
       // login successful
       Session::init();
@@ -36,5 +38,6 @@ class LoginModel extends Model {
   }
 
 }
+
 
  ?>
