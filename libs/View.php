@@ -23,7 +23,6 @@ class View {
     }
 
     echo '</body></html>';
-
   }
 
   //Duong Tran 2016 0423
@@ -77,7 +76,22 @@ class View {
     }
   }
 
-  // public function render_
+  public function render_search_page_template($contentFile) {
+    echo '<!DOCTYPE html><html><head>';
+    require 'views/head.php';
+    echo '</head><body>';
+
+    require 'views/header.php';
+    require 'views/searchbar.php';
+
+    echo '<div class="m-container"><div class="row m-search-overview">';
+    require 'views/' . $contentFile . '.php';
+    require 'views/rightcontent.php';
+    echo "</div></div>";
+
+    require 'views/footer.php';
+    echo '</body></html>';
+  }
 
 }
 
