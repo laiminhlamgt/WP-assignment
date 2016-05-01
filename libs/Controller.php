@@ -4,6 +4,7 @@ class Controller {
 
   public function __construct() {
     $this->view = new View();
+    $this->view->isExistParamInUrl = false;
   }
 
   public function loadModel($name) {
@@ -14,6 +15,14 @@ class Controller {
       $modelName = $name . 'Model';
       $this->model = new $modelName();
     }
+  }
+
+  public function setIsDefaultPage($trueOrFalse) {
+    $this->view->isDefaultPage = $trueOrFalse;
+  }
+
+  public function setExistParamInUrl($trueOrFalse) {
+    $this->view->isExistParamInUrl = $trueOrFalse;
   }
 
 }

@@ -9,33 +9,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <?php if (isset($this->isSearch)) {
-        echo '<a href="../index">';
-
-      } else {
-        echo '<a href="index">';
-      }
-      ?>
+      <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>index">
         <img src="<?php echo URL; ?>/public/images/logo.png" alt="logo" />
       </a>
     </div>
     <div class="d-navbar-login">
       <ul class="d-clearfix d-navbar-right">
         <li>
-
           <?php
           if (Session::get('loggedIn') == false) {
-            if (isset($this->isSearch)) {
-              echo '<a href="../login">ĐĂNG NHẬP';
-
-            } else {
-              echo '<a href="login">ĐĂNG NHẬP';
-            }
+            $label = 'ĐĂNG NHẬP';
+            $ref = ($this->isExistParamInUrl) ? '../login' : 'login';
 
           } else {
-            echo '<a href="login/logout">THOÁT';
+            $label = 'THOÁT';
+            $ref = 'login/logout';
           }
+
+          echo '<a href="' . $ref . '">' . $label;
           ?>
           <i class="fa fa-sign-in"></i></a>
         </li>
@@ -90,36 +81,15 @@
           </div>
         </li>
         <li>
-          <?php if (isset($this->isSearch)) {
-            echo '<a href="../help">';
-
-          } else {
-            echo '<a href="help">';
-          }
-          ?>
-          TRỢ GIÚP</a>
+          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>help">TRỢ GIÚP</a>
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <?php if (isset($this->isSearch)) {
-            echo '<a href="../user">';
-
-          } else {
-            echo '<a href="user">';
-          }
-          ?>
-          TRANG CÁ NHÂN</a>
+          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>user">TRANG CÁ NHÂN</a>
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <?php if (isset($this->isSearch)) {
-            echo '<a href="../post">';
-
-          } else {
-            echo '<a href="post">';
-          }
-          ?>
-          RAO TIN</a>
+          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>post">RAO TIN</a>
           <div class="d-menu-content"></div>
         </li>
       </ul>

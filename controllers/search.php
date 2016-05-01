@@ -6,7 +6,6 @@ class Search extends Controller {
     parent::__construct();
     // $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Tìm kiếm';
-    $this->view->isSearch = true;
   }
 
   public function index() {
@@ -14,6 +13,7 @@ class Search extends Controller {
   }
 
   public function search() {
+    $this->setExistParamInUrl(true);
     // echo "Have gone to search function in SeachController";
     // if (isset($_GET['content'])) {
     //   $content = $_GET['content'];
