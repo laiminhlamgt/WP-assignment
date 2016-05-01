@@ -22,7 +22,6 @@ class Bootstrap {
     $url = explode('/', $url);
     $controllerName = $url[0];
 
-    
     $file = 'controllers/' . $controllerName . '.php';
     // check the controller file is exists
     if (file_exists($file)) {
@@ -30,8 +29,8 @@ class Bootstrap {
 
     } else {
       // if controller not found, return error
-       $this->_error();
-      
+      $this->_error();
+
       return false;
     }
 

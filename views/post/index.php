@@ -171,27 +171,32 @@
       <div class="l-info-item">
         <label>Loại nhà đất</label>
         <select class="l-input l-input-select" name="loainhadat">
-          <option value="-1">--Chọn loại nhà đất--</option>
-          <option value="1">--Cho thuê căn hộ chung cư--</option>
-          <option value="2">--Cho thuê nhà riêng--</option>
-          <option value="3">--Cho thuê nhà mặt phố--</option>
-          <option value="4">--Cho thuê nhà trọ, phòng trọ--</option>
-          <option value="5">--Cho thuê văn phòng--</option>
+          <option value="-1">-- Chọn loại nhà đất --</option>
+          <?php
+          foreach ($this->lstTypeOfHouse as $key => $element) {
+            $id = $element['id'];
+            $name = $element['name'];
+            echo "<option value='$id'>-- $name --</option>";
+          }
+           ?>
         </select>
       </div>
       <div class="l-info-item">
         <label>Vị trí</label>
-        <select class="l-input l-input-select" name="quanhuyen">
+        <select class="l-input l-input-select" name="quanhuyen" id="district">
           <option value="-1">-- Chọn Quận/Huyện --</option>
-          <option value="1">-- Quận 1 --</option>
-          <option value="2">-- Quận 2 --</option>
-          <option value="3">-- Quận 3 --</option>
-          <option value="4">-- Quận 4 --</option>
+          <?php
+          foreach ($this->lstDistrict as $key => $element) {
+            $id = $element['id'];
+            $name = $element['name'];
+            echo "<option value='$id'>-- $name --</option>";
+          }
+           ?>
         </select>
-        <select class="l-input l-input-select" name="phuongxa">
+        <select class="l-input l-input-select" name="phuongxa" id="ward">
           <option value="-1">-- Chọn Phường/Xã --</option>
         </select>
-        <select class="l-input l-input-select" name="duongpho">
+        <select class="l-input l-input-select" name="duongpho" id="street">
           <option value="-1">-- Chọn Đường/Phố --</option>
         </select>
         <select class="l-input l-input-select" name="loaiduan">

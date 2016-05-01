@@ -7,7 +7,6 @@ class LoginModel extends Model {
   }
 
   public function login($email, $password) {
-    
     $sql = 'select id,role from user
       where email=:email and password=:password';
     $bindValue = array(

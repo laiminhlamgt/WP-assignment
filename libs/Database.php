@@ -3,20 +3,19 @@
 class Database extends PDO {
 
   public function __construct() {
-    $dsn = sprintf('%s: host=%s; dbname=%s', DB_TYPE, DB_HOST, DB_NAME);// data source name
+    $dsn = sprintf('%s: host=%s; dbname=%s; charset=utf8', DB_TYPE, DB_HOST, DB_NAME);// data source name
     parent::__construct($dsn, DB_USER, DB_PASS);
 
     // parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
   }
 
   public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
-    
+
     $query = $this->prepare($sql);
     foreach ($array as $key => $value) {
       $query->bindValue(":$key", $value);
     }
     $query->execute();
-    
 
     return $query->fetchAll($fetchMode);
   }
@@ -34,8 +33,8 @@ class Database extends PDO {
     //Duong Tran 2016 0424
     //change the output that get both status and error message.
     ob_start();
-    $result->successful = $query->execute(); 
-    $result->message = $query->errorInfo(); 
+    $result->successful = $query->execute();
+    $result->message = $query->errorInfo();
     ob_end_clean();
     return $result;
   }
@@ -59,8 +58,8 @@ class Database extends PDO {
     //Duong Tran 2016 0424
     //change the output that get both status and error message.
     ob_start();
-    $result->successful = $query->execute(); 
-    $result->message = $query->errorInfo(); 
+    $result->successful = $query->execute();
+    $result->message = $query->errorInfo();
     ob_end_clean();
     return $result;
   }
