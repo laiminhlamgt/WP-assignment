@@ -11,7 +11,7 @@ class Post extends Controller {
   public function index() {
     $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
     $this->view->lstDistrict = $this->model->getLstDistrict();
-    $this->view->render('post/index');
+    $this->view->render_search_page_template('post/index');
   }
 
   public function getLstWard() {
