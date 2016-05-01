@@ -2,7 +2,7 @@
 <div class="col-md-9 m-config-search-result">
   <h2 style="color:#bd1000;text-align:center;">Đăng tin bất động sản</h2>
 
-  <form action="post" method="get">
+  <form action="post/post" method="get">
     <div class="l-info-box">
       <h3 class="l-title">Thông tin cơ bản</h3>
       <div class="l-info-item">

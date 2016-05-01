@@ -42,6 +42,10 @@ class Post extends Controller {
     }
   }
 
+  public function post() {
+    
+  }
+
 }
 
  ?>
