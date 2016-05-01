@@ -10,9 +10,9 @@ class View {
 
   public function render($filename, $noIncludeHeaderAndFooter = false) {
     echo '<!DOCTYPE html><html><head>';
-    echo '</head><body>';
     require 'views/head.php';
-    
+    echo '</head><body>';
+
     if ($noIncludeHeaderAndFooter == true) {
       require 'views/' . $filename . '.php';
 
@@ -30,7 +30,7 @@ class View {
   //the dashboard_render is used by admin views.
   public function dashboard_render($fileName, $fileDir = DashboardFileDirEnum::ROOT, $isPartialView = false)
   {
-    //check that only admin can render dashboard. 
+    //check that only admin can render dashboard.
     if(Session::get('loggedIn') != true || Session::get('role') != RoleEnum::Admin)
     {
       //if this is not browser full view request
@@ -48,7 +48,7 @@ class View {
 
     if($isPartialView)
     {
-      require $fileDir . $fileName . '.php';  
+      require $fileDir . $fileName . '.php';
     }
     else
     {
@@ -71,11 +71,13 @@ class View {
       echo '</div>';
 
       require DashboardFileDirEnum::ROOT . 'modal-view.php';
-      
+
       //require 'views/dashboard/popup.php';
       echo '</body></html>';
     }
   }
+
+  // public function render_
 
 }
 
