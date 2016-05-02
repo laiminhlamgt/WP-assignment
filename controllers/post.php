@@ -14,13 +14,13 @@ class Post extends Controller {
     $this->view->render_search_page_template('post/index');
   }
 
-  public function getLstWard() {
-    if (isset($_GET['district'])) {
-      $district_id = $_GET['district'];
+  public function getLstWards() {
+    if (isset($_GET['district_id'])) {
+      $district_id = $_GET['district_id'];
 
       if ($district_id > 0 && $district_id < 25) {
-        $lstWard = $this->model->getLstWard($district_id);
-        echo json_encode($lstWard);
+        $lstWards = $this->model->getLstWards($district_id);
+        echo json_encode($lstWards);
       }
 
     } else {
@@ -28,13 +28,27 @@ class Post extends Controller {
     }
   }
 
-  public function getLstStreet() {
-    if (isset($_GET['district'])) {
-      $district_id = $_GET['district'];
+  public function getLstStreets() {
+    if (isset($_GET['district_id'])) {
+      $district_id = $_GET['district_id'];
 
       if ($district_id > 0 && $district_id < 25) {
-        $lstStreet = $this->model->getLstStreet($district_id);
-        echo json_encode($lstStreet);
+        $lstStreets = $this->model->getLstStreets($district_id);
+        echo json_encode($lstStreets);
+      }
+
+    } else {
+
+    }
+  }
+
+  public function getLstProjects() {
+    if (isset($_GET['district_id'])) {
+      $district_id = $_GET['district_id'];
+
+      if ($district_id > 0 && $district_id < 25) {
+        $lstProjects = $this->model->getLstProjects($district_id);
+        echo json_encode($lstProjects);
       }
 
     } else {
