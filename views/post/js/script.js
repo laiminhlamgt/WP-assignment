@@ -1,3 +1,94 @@
+function moveTo(cssQueryToAnchor) {
+  $('html, body').animate({
+    'scrollTop': $(cssQueryToAnchor).offset().top
+  }, 500);
+}
+
+function isMobileNumber(number) {
+  var regex = /^(0|\+84)\d{9,10}$/;
+  if(number.match(regex)) {
+    return true;
+
+  } else {
+    return false;
+  }
+}
+
+function validateForm() {
+  var location = '';
+  var mobileNumber = $('input[name="mobile"]').val().trim();
+  var name = $('input[name="name"]').val().trim();
+  var description = $('textarea[name="description"]').val().trim();
+  var title = $('input[name="title"]').val().trim();
+  var typeOfHouse = $('select[name="type-of-house"]').val();
+
+  // validate mobile number
+  if (!mobileNumber) {
+    $('#err-mobile').text('Bạn cần nhập số di động');
+    location = '#err-mobile';
+
+  } else if (!isMobileNumber(mobileNumber)) {
+    $('#err-mobile').text('Số điện thoại không đúng định dạng. '
+      + 'Mời bạn nhập lại!');
+    location = '#err-mobile';
+
+  } else {
+    $('#err-mobile').text('');
+  }
+
+  // validate name
+  if (!name) {
+    $('#err-name').text('Bạn cần nhập họ tên');
+    location = '#err-name';
+
+  } else {
+    $('#err-name').text('');
+  }
+
+  // validate description
+  console.log(description);
+  if (!description) {
+    $('#err-description').text('Bạn cần nhập nội dung mô tả');
+    location = '#err-description';
+
+  } else if (description.length < 5) {
+    $('#err-description').text('Nội dung mô tả phải có ít nhất 5 kí tự');
+    location = '#err-description';
+
+  } else {
+    $('#err-description').text('');
+  }
+
+  // validate title
+  if (!title) {
+    $('#err-title').text('Bạn cần nhập tiêu đề');
+    location = '#err-title';
+
+  } else if (title.length < 5) {
+    $('#err-title').text('Tiêu đề phải có ít nhất 5 kí tự');
+    location = '#err-title';
+
+  } else {
+    $('#err-title').text('');
+  }
+
+  // validate type of house
+  if (typeOfHouse < 1) {
+    $('#err-type-of-house').text('Bạn cần chọn loại nhà đất');
+    location = '#err-type-of-house';
+  } else {
+    $('#err-type-of-house').text('');
+  }
+
+  if (location) {
+    moveTo(location);
+    return false;
+
+  } else {
+    return true;
+  }
+
+}
 
 function addWards(lstWards) {
   var wardSelect = $('#ward');

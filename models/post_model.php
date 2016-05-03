@@ -63,6 +63,8 @@ class PostModel extends Model {
       'user_id' => $newHouse->userId
     );
 
+    // $result->successful = true;
+    return true;
     // return $this->db->insert('user', $bindValue);
   }
 
