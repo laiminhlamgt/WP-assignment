@@ -89,7 +89,7 @@
           <div class="d-menu-content"></div>
         </li>
         <li>
-          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>post">RAO TIN</a>
+          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>post">ĐĂNG TIN</a>
           <div class="d-menu-content"></div>
         </li>
       </ul>
