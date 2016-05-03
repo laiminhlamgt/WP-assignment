@@ -6,12 +6,7 @@ function moveTo(cssQueryToAnchor) {
 
 function isMobileNumber(number) {
   var regex = /^(0|\+84)\d{9,10}$/;
-  if(number.match(regex)) {
-    return true;
-
-  } else {
-    return false;
-  }
+  return number.match(regex);
 }
 
 function validateForm() {

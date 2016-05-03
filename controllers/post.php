@@ -158,23 +158,16 @@ class Post extends Controller {
 
     if ($isValid) {
       $result = $this->model->addNewHouse($newHouse);
-      // if ($result->successful) {
-      //   $this->view->result = 'Đăng tin thành công';
-      // } else {
-      //   $this->view->result = 'Xảy ra lỗi trong quá trình xử lí';
-      // }
-      if ($result) {
-        $this->view->result = 'Đăng tin thành công';
-      } else {
-        $this->view->result = 'Xảy ra lỗi trong quá trình xử lí';
-      }
 
-      $this->view->render_search_page_template('post/postresult');
+      $this->view->result = ($result->successful)
+        ? 'Đăng tin thành công'
+        : 'Xảy ra lỗi trong quá trình xử lí';
+
+      $this->view->render_search_page_template('post/post-result');
 
     } else {
       $this->view->render_search_page_template('post/index');
     }
-
 
   }
 
@@ -187,7 +180,7 @@ class Post extends Controller {
     $newHouse->address = null;
     $newHouse->numOfFloor = null;
     $newHouse->numOfRoom = null;
-    $newHouse->numbOfRestroom = null;
+    $newHouse->numOfRestroom = null;
     $newHouse->postTitle = null;
     $newHouse->postDescription = null;
     $newHouse->contactName = null;
@@ -202,11 +195,7 @@ class Post extends Controller {
   }
 
   private function _isMobileNumber($number) {
-    if(preg_match("/^(0|\+84)\d{9,10}$/", $number)) {
-      return true;
-    } else {
-      return false;
-    }
+    return preg_match("/^(0|\+84)\d{9,10}$/", $number);
   }
 
 }

@@ -52,7 +52,7 @@ class PostModel extends Model {
       'address' => $newHouse->address,
       'number_of_floor' => $newHouse->numOfFloor,
       'number_of_room' => $newHouse->numOfRoom,
-      'number_of_restroom' => $newHouse->numbOfRestroom,
+      'number_of_restroom' => $newHouse->numOfRestroom,
       'post_title' => $newHouse->postTitle,
       'post_description' => $newHouse->postDescription,
       'contact_name' => $newHouse->contactName,
@@ -63,9 +63,7 @@ class PostModel extends Model {
       'user_id' => $newHouse->userId
     );
 
-    // $result->successful = true;
-    return true;
-    // return $this->db->insert('user', $bindValue);
+    return $this->db->insert('house', $bindValue);
   }
 
 }
