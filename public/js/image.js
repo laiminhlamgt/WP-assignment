@@ -31,17 +31,13 @@ function processImageInput(control)
 	 	$(inputImgFile).attr('onchange', 'uploadImage("' + guidId + '")');
 	 	$(imgTag).after(inputImgFile);
 
-	 	var labelTag = document.createElement('label');
-	 	$(labelTag).attr('id','label_' + guidId);;
-	 	$(labelTag).html('delete');
-	 	$(labelTag).attr('onclick','removeImage("' + guidId + '")');
-	 	$(labelTag).hide();
-	 	$(inputImgFile).after(labelTag);
-
-	 	var divTag = document.createElement('div');
-	 	$(divTag).attr('id','div_' + guidId);;
-	 	$(labelTag).after(divTag);
-
+	 	var deleteTag = document.createElement('div');
+	 	$(deleteTag).attr('id','div_' + guidId);
+	 	$(deleteTag).html('delete');
+	 	$(deleteTag).attr('onclick','removeImage("' + guidId + '")');
+	 	$(deleteTag).addClass('d-image-delete-tag');
+	 	$(deleteTag).hide();
+	 	$(inputImgFile).after(deleteTag);
 
 	 }
 	 if(imgValue != '')
@@ -91,8 +87,8 @@ function processImageInput(control)
 	 				$('#img_' + guidId).attr('height',height);
 	 				$('#img_' + guidId).attr('width',width);
 	 				$('#img_' + guidId).show();
-	 				$('#label_' + guidId).show();
-	 				$('#input_' + guidId).show();
+	 				$('#div_' + guidId).show();
+	 				$('#input_' + guidId).hide();
 	 			}
 	 			else
 	 			{
@@ -172,7 +168,7 @@ function processImageInput(control)
 	 				$('#img_' + guidId).attr('height',height);
 	 				$('#img_' + guidId).attr('width',width);
 	 				$('#img_' + guidId).show();
-	 				$('#label_' + guidId).show();
+	 				$('#div_' + guidId).show();
 	 				inputImg.hide();
 	 				$($('input[customid=' + guidId +']')[0]).val(response.data.id);
 					//$('#div_' + guidId).html('<img height="' + response.data.height + '" width = "' + response.data.width + '" src="' + response.data.src + '" />')
@@ -195,14 +191,82 @@ function processImageInput(control)
 		$($('input[customid=' + guidId +']')[0]).val('');
 
 		$('#img_' + guidId).hide();
-		$('#label_' + guidId).hide();
+		$('#div_' + guidId).hide();
 
 
 
-	}
+	};
+
+	function processImageImg(control)
+	{
+		var imgValue = $(control).attr('image-id');
+		if(imgValue > 0)
+		{
+			$.ajax(
+		 	{
+		 		url: Define_URL + 'gallery/generate_image_content_ajax',
+		 		type: "GET",
+		 		data: {imgId:imgValue},
+		 		dataType : "json",
+		 		success:function(response) 
+		 		{
+		 			if(response.status == true)
+		 			{			
+		 				$(control).attr('src',response.data.src);
+
+		 				var img_max_height = $(control).attr('img-max-height');
+		 				var img_max_width = $(control).attr('img-max-width');
+		 				var height = response.data.height;
+		 				var width = response.data.width;
+
+		 				if(parseInt(img_max_width,10) > 0 && parseInt(img_max_height,10) > 0)
+		 				{
+		 					if(parseInt(height,10) > parseInt(img_max_height,10))
+		 					{
+		 						width = img_max_height * width / height; 
+		 						height = img_max_height;
+		 					}
+		 					//console.log("2 : " + img_max_height + " " + img_max_width + " " + height + " " + width);
+
+		 					if(parseInt(width,10) > parseInt(img_max_width,10))
+		 					{
+		 						height = img_max_width * height / width; 
+		 						width = img_max_width;	
+		 					}
+		 					// console.log("3 : " + img_max_height + " " + img_max_width + " " + height + " " + width);
+		 				}else if(parseInt(img_max_height,10) > 0 && parseInt(height,10) > parseInt(img_max_height,10))
+		 				{
+		 					width = img_max_height * width / height; 
+		 					height = img_max_height;
+		 				}else if(parseInt(img_max_width,10) > 0 && width > parseInt(img_max_width,10))
+		 				{
+		 					height = img_max_width * height / width; 
+		 					width = img_max_width;
+		 				}
+
+		 				$(control).attr('height',height);
+		 				$(control).attr('width',width);
+		 			}
+		 			else
+		 			{
+		 				console.log(response.message);	
+		 			}
+		 		},
+		 		error: function(jqXHR, textStatus, errorThrown) 
+		 		{  
+		 			alert('error :' + jqXHR.responseText);   
+		 		}
+		 	});
+		}
+	 	$(control).removeClass('pending');
+	 	$(control).addClass('processed');
+	};
 
 	setInterval(function(){
 		$('.d-image-input.pending').each(function(){
 			processImageInput(this);
+		});
+		$('.d-image-img.pending').each(function(){
+			processImageImg(this);
 		});
 	}, 500);

@@ -1,0 +1,14 @@
+.d-image-input-wrapper{
+	display:inline-block;
+}
+.d-image-delete-tag{
+	text-align:center;
+	font-size:20px;
+	cursor:pointer;
+}
+.d-image-input{
+	display: none;
+}
+.d-image-img{
+	display:block;
+}
