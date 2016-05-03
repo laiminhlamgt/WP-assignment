@@ -10,6 +10,12 @@ class View {
 
   public function render($filename, $noIncludeHeaderAndFooter = false) {
     echo '<!DOCTYPE html><html><head>';
+
+    //Duong Tran 2016 0502 : generate configured value to use in js file
+      echo '<script>';
+      echo 'var Define_URL = ' . '"' . URL . '";';
+      echo '</script>';
+
     require 'views/head.php';
     echo '</head><body>';
 
@@ -56,7 +62,6 @@ class View {
       echo '<script>';
       echo 'var Define_URL = ' . '"' . URL . '";';
       echo 'var Define_Dashboard_ROOT = ' . '"' . DashboardFileDirEnum::ROOT . '";';
-      echo 'console.log("hahaha  " + Define_URL);';
       echo '</script>';
 
       require DashboardFileDirEnum::ROOT . 'head.php';
@@ -92,7 +97,6 @@ class View {
     require 'views/footer.php';
     echo '</body></html>';
   }
-
 }
 
  ?>
