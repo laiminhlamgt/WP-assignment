@@ -35,6 +35,7 @@ class Database extends PDO {
     ob_start();
     $result->successful = $query->execute();
     $result->message = $query->errorInfo();
+    $result->id = $this->lastInsertId();
     ob_end_clean();
     return $result;
   }

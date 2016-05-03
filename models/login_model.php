@@ -23,6 +23,9 @@ class LoginModel extends Model {
       Session::init();
       Session::set('loggedIn', true);
       Session::set('role', $data[0]['role']);
+      //Duong Tran 2016 0502
+      Session::set('userId',$data[0]['id']);
+      //End Duong Tran
       if ($data[0]['role'] == 'admin') {
         header('location: ../dashboard');
       } else {
