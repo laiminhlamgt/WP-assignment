@@ -17,13 +17,14 @@
       <ul class="d-clearfix d-navbar-right">
         <li>
           <?php
+          $ref = ($this->isExistParamInUrl) ? '../login' : 'login';
+
           if (Session::get('loggedIn') == false) {
             $label = 'ĐĂNG NHẬP';
-            $ref = ($this->isExistParamInUrl) ? '../login' : 'login';
 
           } else {
             $label = 'THOÁT';
-            $ref = 'login/logout';
+            $ref = $ref . '/logout';
           }
 
           echo '<a href="' . $ref . '">' . $label;
