@@ -210,6 +210,7 @@ function processImageInput(control)
 		 		dataType : "json",
 		 		success:function(response) 
 		 		{
+		 			console.log(response);
 		 			if(response.status == true)
 		 			{			
 		 				$(control).attr('src',response.data.src);

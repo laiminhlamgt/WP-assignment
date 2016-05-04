@@ -17,6 +17,7 @@ $role = "";
 $telephone = "";
 $mobile = "";
 $id = 0;
+$imgId = 0;
 if($this->model != null)
 {
 	$id = $this->model[0]['id'];
@@ -26,6 +27,7 @@ if($this->model != null)
 	$mobile = $this->model[0]['mobile_number'] != null ? $this->model[0]['mobile_number'] : "";
 	$role = $this->model[0]['role'] != null ? $this->model[0]['role'] : "";
 	$telephone = $this->model[0]['telephone_number'] != null ? $this->model[0]['telephone_number'] : "";
+	$imgId = $this->model[0]['avatar_id'] != null ? $this->model[0]['avatar_id'] : 0;
 }
 
 ?>
@@ -64,6 +66,14 @@ if($id == 0) {
 <td>
 	<input <?php echo ($role == '' || $role == 'guest') ? 'checked' : '';  ?> type="radio" name="role" value="guest"> Guest<br>
 	<input <?php echo ($role == 'admin') ? 'checked' : '';  ?> type="radio" name="role" value="admin"> Admin
+</td>
+</tr>
+<tr>
+<th>Avatar</th>
+<td>
+<div class='d-image-input-wrapper'>
+  <input name='avatar' img-max-height="500" img-max-width="1200" class='d-image-input pending' type='text' value='<?php echo $imgId; ?>' />
+</div>
 </td>
 </tr>
 </table>

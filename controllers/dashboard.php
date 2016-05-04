@@ -153,7 +153,7 @@ class Dashboard extends Controller {
       else
       {
         $result = $this->model->create_new_user($_POST['email'],$_POST['password'],$_POST['first_name'],
-          $_POST['last_name'],$_POST['telephone_number'], $_POST['mobile_number'], $_POST['role']);
+          $_POST['last_name'],$_POST['telephone_number'], $_POST['mobile_number'], $_POST['role'], $_POST['avatar']);
         if($result->successful == false)
         {
           $response->status = false;
@@ -189,7 +189,7 @@ class Dashboard extends Controller {
       else
       {
         $result = $this->model->update_user($_POST['id'],$_POST['password'],$_POST['first_name'],
-          $_POST['last_name'],$_POST['telephone_number'], $_POST['mobile_number'], $_POST['role']);
+          $_POST['last_name'],$_POST['telephone_number'], $_POST['mobile_number'], $_POST['role'],$_POST['avatar']);
         if($result->successful == false)
         {
           $response->status = false;

@@ -51,7 +51,7 @@ class DashboardModel extends Model {
 
   function get_user_model_by_id($id)
   {
-    $sql = 'select id,role ,first_name, last_name, telephone_number, mobile_number, email from user
+    $sql = 'select id,role ,first_name, last_name, telephone_number, mobile_number, email, avatar_id from user
       where active = :active and id = :id';
     $bindValue = array(
       'active' => 1,
@@ -65,7 +65,7 @@ class DashboardModel extends Model {
 
   function get_user_model_by_email($email)
   {
-    $sql = 'select id,role ,first_name, last_name, telephone_number, mobile_number, email from user
+    $sql = 'select id,role ,first_name, last_name, telephone_number, mobile_number, email, avatar_id from user
       where active = :active and email = :email';
     $bindValue = array(
       'active' => 1,
@@ -76,7 +76,7 @@ class DashboardModel extends Model {
     return count($data) > 0 ? $data : null; 
   }
 
-  function create_new_user($email,$password,$first_name,$last_name,$telephone_number, $mobile_number,$role)
+  function create_new_user($email,$password,$first_name,$last_name,$telephone_number, $mobile_number,$role, $imgId)
   {
     $bindValue = array(
         'email' => $email,
@@ -85,13 +85,14 @@ class DashboardModel extends Model {
         'last_name' => $last_name != null ? $last_name : '',
         'telephone_number' => $telephone_number != null ? $telephone_number : '',
         'mobile_number' => $mobile_number != null ? $mobile_number : '',
-        'role' => $role != null ? $role : 'guest'//default is guest , Duong Tran noted that the role need verify first.
+        'role' => $role != null ? $role : 'guest',//default is guest , Duong Tran noted that the role need verify first.
+        'avatar_id' => $imgId != null ? $imgId : 0
         );
       
       return $this->db->insert('user', $bindValue);
   }
 
-  function update_user($id, $password,$first_name,$last_name,$telephone_number,$mobile_number,$role)
+  function update_user($id, $password,$first_name,$last_name,$telephone_number,$mobile_number,$role, $imgId)
   {
     if($password != null && $password != '')
     {
@@ -101,7 +102,8 @@ class DashboardModel extends Model {
         'last_name' => $last_name != null ? $last_name : '',
         'telephone_number' => $telephone_number != null ? $telephone_number : '',
         'mobile_number' => $mobile_number != null ? $mobile_number : '',
-        'role' => $role != null ? $role : 'guest'//default is guest , Duong Tran noted that the role need verify first.
+        'role' => $role != null ? $role : 'guest',//default is guest , Duong Tran noted that the role need verify first.
+        'avatar_id' => $imgId != null ? $imgId : 0
         );
 
       return $this->db->update('user', $bindValue,'id=' . $id); 
@@ -114,7 +116,8 @@ class DashboardModel extends Model {
         'last_name' => $last_name != null ? $last_name : '',
         'telephone_number' => $telephone_number != null ? $telephone_number : '',
         'mobile_number' => $mobile_number != null ? $mobile_number : '',
-        'role' => $role != null ? $role : 'guest'//default is guest , Duong Tran noted that the role need verify first.
+        'role' => $role != null ? $role : 'guest',//default is guest , Duong Tran noted that the role need verify first.
+        'avatar_id' => $imgId != null ? $imgId : 0
         );
 
       return $this->db->update('user', $bindValue,'id=' . $id); 
