@@ -81,8 +81,15 @@ class View {
     }
   }
 
-  public function render_search_page_template($contentFile) {
+  public function render_search_page_template($contentFile, $isImportSubmitPicture = false) {
     echo '<!DOCTYPE html><html><head>';
+
+    if ($isImportSubmitPicture) {
+      echo '<script>';
+      echo 'var Define_URL = ' . '"' . URL . '";';
+      echo '</script>';
+    }
+
     require 'views/head.php';
     echo '</head><body>';
 

@@ -84,14 +84,21 @@
           <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>help">TRỢ GIÚP</a>
           <div class="d-menu-content"></div>
         </li>
-        <li>
-          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>user">TRANG CÁ NHÂN</a>
-          <div class="d-menu-content"></div>
-        </li>
-        <li>
-          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>post">ĐĂNG TIN</a>
-          <div class="d-menu-content"></div>
-        </li>
+        <?php
+        if (Session::get('loggedIn') == true) {
+          $path = (($this->isExistParamInUrl) ? '../' : '') . 'user';
+          echo '<li>';
+          echo '<a href="'.$path.'">TRANG CÁ NHÂN</a>';
+          echo '<div class="d-menu-content"></div>';
+          echo '</li>';
+
+          $path = (($this->isExistParamInUrl) ? '../' : '') . 'post';
+          echo '<li>';
+          echo '<a href="'.$path.'">ĐĂNG TIN</a>';
+          echo '<div class="d-menu-content"></div>';
+          echo '</li>';
+        }
+         ?>
       </ul>
     </div>
   </div>

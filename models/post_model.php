@@ -43,6 +43,16 @@ class PostModel extends Model {
     return $this->db->select($sql, $bindValue);
   }
 
+  public function getUserInfo($userId) {
+    $sql = 'SELECT first_name, last_name, email, telephone_number, mobile_number
+      FROM user WHERE id=:id';
+    $bindValue = array(
+      'id' => $userId
+    );
+
+    return $this->db->select($sql, $bindValue)[0];
+  }
+
   public function addNewHouse($newHouse) {
     $bindValue = array(
       'type_of_house_id' => $newHouse->typeOfHouseId,
@@ -55,6 +65,7 @@ class PostModel extends Model {
       'number_of_restroom' => $newHouse->numOfRestroom,
       'post_title' => $newHouse->postTitle,
       'post_description' => $newHouse->postDescription,
+      'picture1_id' => $newHouse->picture1Id,
       'contact_name' => $newHouse->contactName,
       'contact_address' => $newHouse->contactAddress,
       'telephone_number' => $newHouse->tel,

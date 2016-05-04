@@ -4,14 +4,32 @@ class Post extends Controller {
 
   public function __construct() {
     parent::__construct();
+    Session::init();
     $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Đăng tin mới';
   }
 
   public function index() {
+    $logged = Session::get('loggedIn');
+    if ($logged == false) {
+      header('Location: index');
+      exit;
+    }
+
+    $userInfo = $this->model->getUserInfo(Session::get('userId'));
+
+    $this->view->fullname = $userInfo['last_name'] . ' ' . $userInfo['first_name'];
+    if ($userInfo['telephone_number'] != null) {
+      $this->view->tel = $userInfo['telephone_number'];
+    }
+    if ($userInfo['mobile_number'] != null) {
+      $this->view->mobile = $userInfo['mobile_number'];
+    }
+    $this->view->email = $userInfo['email'];
+
     $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
     $this->view->lstDistrict = $this->model->getLstDistrict();
-    $this->view->render_search_page_template('post/index');
+    $this->view->render_search_page_template('post/index', true);
   }
 
   public function getLstWards() {
@@ -99,6 +117,13 @@ class Post extends Controller {
       $isValid = false;
     }
 
+    if (isset($_POST['image'])) {
+      $image = trim($_POST['image']);
+      if (strlen($image) > 0) {
+        $newHouse->picture1Id = $image;
+      }
+    }
+
     // validate description
     if (isset($_POST['description'])) {
       $description = trim($_POST['description']);
@@ -156,6 +181,8 @@ class Post extends Controller {
       $isValid = false;
     }
 
+    $newHouse->userId = Session::get('userId');
+
     if ($isValid) {
       $result = $this->model->addNewHouse($newHouse);
 
@@ -166,7 +193,7 @@ class Post extends Controller {
       $this->view->render_search_page_template('post/post-result');
 
     } else {
-      $this->view->render_search_page_template('post/index');
+      $this->view->render_search_page_template('post/index', true);
     }
 
   }
@@ -183,6 +210,7 @@ class Post extends Controller {
     $newHouse->numOfRestroom = null;
     $newHouse->postTitle = null;
     $newHouse->postDescription = null;
+    $newHouse->picture1Id = null;
     $newHouse->contactName = null;
     $newHouse->contactAddress = null;
     $newHouse->tel = null;

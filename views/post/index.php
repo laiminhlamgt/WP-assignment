@@ -107,9 +107,11 @@
       <div class="l-info-item">
         <label>Cập nhật hình ảnh</label>
         <p class="l-input-required">
-          (Bạn có thể nhập tối đa 6 ảnh và mỗi ảnh nặng không quá 4MB)
+          (Bạn có thể nhập tối đa 1 ảnh và mỗi ảnh nặng không quá 4MB)
         </p>
-        <input type="file" name="file">
+        <div class='d-image-input-wrapper'>
+          <input name='image' img-max-height="500" img-max-width="1200" class='d-image-input pending' type='text'/>
+        </div>
       </div>
     </div>
     <!-- Thong tin lien he -->
@@ -120,7 +122,9 @@
         <span class="l-required" id="err-name">
         <?php echo (isset($this->errName)) ? $this->errName : ''; ?>
         </span>
-        <input type="text" name="name" class="l-input l-input-long">
+        <input type="text" name="name" class="l-input l-input-long"
+          value="<?php
+          echo (isset($this->fullname)) ? $this->fullname : '' ?>">
       </div>
       <div class="l-info-item">
         <label>Địa chỉ</label>
@@ -128,18 +132,21 @@
       </div>
       <div class="l-info-item">
         <label>Điện thoại</label>
-        <input type="text" name="tel" class="l-input l-input-long">
+        <input type="text" name="tel" class="l-input l-input-long"
+          value="<?php echo (isset($this->tel)) ? $this->tel : '' ?>">
       </div>
       <div class="l-info-item">
         <label>Di động</label> <span class="l-required">(*)</span>
         <span class="l-required" id="err-mobile">
         <?php echo (isset($this->errMobile)) ? $this->errMobile : ''; ?>
         </span>
-        <input type="text" name="mobile" class="l-input l-input-long">
+        <input type="text" name="mobile" class="l-input l-input-long"
+          value="<?php echo (isset($this->mobile)) ? $this->mobile : '' ?>">
       </div>
       <div class="l-info-item">
         <label>Email</label>
-        <input type="text" name="email" class="l-input l-input-long">
+        <input type="text" name="email" class="l-input l-input-long"
+          value="<?php echo (isset($this->email)) ? $this->email : '' ?>">
       </div>
     </div>
 
