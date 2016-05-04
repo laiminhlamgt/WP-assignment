@@ -35,6 +35,7 @@ function SubmitEditUserForm(){
                     $('#editUserForm_UserId').val(data.new_id);
                     $('#editUserForm_EmailInput').prop('disabled', true);
                     $('#editUserForm_EmailLabel').append(' (can not change)');
+                    $('#editUserForm_DeleteDiv').show();
                     console.log($('#editUserForm_UserId').val());
                 }
                 else

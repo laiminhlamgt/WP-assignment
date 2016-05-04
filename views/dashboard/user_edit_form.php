@@ -70,7 +70,7 @@ if($id == 0) {
 <div class='d-db-modal-view-options'>
 	<div onclick='SubmitEditUserForm()' class='d-db-modal-view-option option-color-green'>Save</div>
 	<div onclick="CloseEdit()" class='d-db-modal-view-option option-color-grey'>Close</div>
-	<div onclick='DeleteUser()' class='d-db-modal-view-option option-color-red'>Delete</div>
+	<div style=" <?php echo ($id == 0 ? 'display: none' : '') ?>" id='editUserForm_DeleteDiv' onclick='DeleteUser()' class='d-db-modal-view-option option-color-red'>Delete</div>
 </div>
 </form>
 <?php
