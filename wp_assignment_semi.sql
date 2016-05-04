@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 03, 2016 at 07:15 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- Host: 127.0.0.1
+-- Generation Time: May 04, 2016 at 06:32 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `wp_assignment_semi`
 --
-CREATE DATABASE IF NOT EXISTS `wp_assignment_semi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `wp_assignment_semi`;
 
 -- --------------------------------------------------------
 
@@ -71,13 +69,13 @@ INSERT INTO `district` (`id`, `name`) VALUES
 
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
-  `name` binary(16) NOT NULL,
   `data` mediumblob NOT NULL,
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `active` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -5407,21 +5405,22 @@ CREATE TABLE `user` (
   `telephone_number` varchar(12) CHARACTER SET ascii DEFAULT NULL,
   `mobile_number` varchar(12) CHARACTER SET ascii DEFAULT NULL,
   `role` char(5) NOT NULL DEFAULT 'guest',
-  `avatar_id` int(11) DEFAULT NULL
+  `avatar_id` int(11) DEFAULT NULL,
+  `active` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `telephone_number`, `mobile_number`, `role`, `avatar_id`) VALUES
-(1, 'Lâm', 'Lại', 'lam@bk.com', '2f765f363d82bb933634d96dae26b83d', NULL, NULL, 'admin', NULL),
-(2, 'Dương', 'Trần', 'duong@bk.com', 'd1bf9a3a272b0b1cf15783cabaf29211', NULL, NULL, 'admin', NULL),
-(3, 'Minh', 'Ngô', 'minh@bk.com', '8bfe98edf23dae257637df7792125500', NULL, NULL, 'admin', NULL),
-(4, 'Trân', 'Phạm', 'tran@bk.com', 'a87d8de39c1a156e00c438b42dd6bb28', NULL, NULL, 'admin', NULL),
-(5, 'Lâm', 'Minh', 'minhlam@bk.com', 'd4dd2af04afe267a129ee6a6462b0426', NULL, NULL, 'guest', NULL),
-(13, 'Trân', 'Bảo', 'baotran@bk.com', 'ab1c0fc125a9ceb3021d5f3987128fcf', NULL, NULL, 'guest', NULL),
-(17, 'Dương', 'Lập', 'lapduong@bk.com', '4208a3d34b31ad5164ca90b1a9923cbd', NULL, NULL, 'guest', NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `telephone_number`, `mobile_number`, `role`, `avatar_id`, `active`) VALUES
+(1, 'Lâm', 'Lại', 'lam@bk.com', '2f765f363d82bb933634d96dae26b83d', NULL, NULL, 'admin', NULL, 1),
+(2, 'Dương', 'Trần', 'duong@bk.com', 'd1bf9a3a272b0b1cf15783cabaf29211', NULL, NULL, 'admin', NULL, 1),
+(3, 'Minh', 'Ngô', 'minh@bk.com', '8bfe98edf23dae257637df7792125500', NULL, NULL, 'admin', NULL, 1),
+(4, 'Trân', 'Phạm', 'tran@bk.com', 'a87d8de39c1a156e00c438b42dd6bb28', NULL, NULL, 'admin', NULL, 1),
+(5, 'Lâm', 'Minh', 'minhlam@bk.com', 'd4dd2af04afe267a129ee6a6462b0426', NULL, NULL, 'guest', NULL, 1),
+(13, 'Trân', 'Bảo', 'baotran@bk.com', 'ab1c0fc125a9ceb3021d5f3987128fcf', NULL, NULL, 'guest', NULL, 1),
+(17, 'Dương', 'Lập', 'lapduong@bk.com', '4208a3d34b31ad5164ca90b1a9923cbd', NULL, NULL, 'guest', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -5781,8 +5780,7 @@ ALTER TABLE `district`
 -- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `house`
