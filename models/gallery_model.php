@@ -25,14 +25,13 @@ class GalleryModel extends Model {
       return $this->db->insert('gallery', $bindValue);
   }
 
-  public function get_image($img_id, $user_id) {
-  	if($img_id > 0 && $user_id > 0)
+  public function get_image($img_id) {
+  	if($img_id > 0)
   	{
 	    $sql = 'select * from gallery
-	      where id=:img_id and user_id=:user_id and active=:active';
+	      where id=:img_id and active=:active';
 	    $bindValue = array(
 	      'img_id' => $img_id,
-	      'user_id' => $user_id,
 	      'active' => 1
 	    );
 
@@ -42,10 +41,7 @@ class GalleryModel extends Model {
 	    // echo $count; die;
 	    if ($count > 0) {
 			$result = $data[0];
-			if($user_id == 1 || $result["user_id"] == $user_id)
-				return $result;
-			else 
-				return null;
+			return $result;
 	    }
 	    else
 	    {

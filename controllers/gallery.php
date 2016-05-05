@@ -47,9 +47,9 @@ public function generate_image_content($id)
 {
  $result = null;
 
- $role = Session::get('role');
- if ($role == 'admin' || $role == 'guest') {
-   $imgdata = $this->model->get_image($id,Session::get('userId'));
+ //$role = Session::get('role');
+ //if ($role == 'admin' || $role == 'guest') {
+   $imgdata = $this->model->get_image($id);
    if($imgdata != null)
    {
      header("Content-type: image/png");
@@ -58,7 +58,7 @@ public function generate_image_content($id)
      $result->height = $imgdata["height"];
      $result->id = $id;
    }
- }
+ //}
  return $result;
 }
 
