@@ -14,6 +14,7 @@ class Search extends Controller {
 
   public function search() {
     $this->setExistParamInUrl(true);
+    $this->view->lstHouse = $this->model->selectAll();
     // echo "Have gone to search function in SeachController";
     // if (isset($_GET['content'])) {
     //   $content = $_GET['content'];
