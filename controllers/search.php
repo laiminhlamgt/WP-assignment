@@ -9,7 +9,7 @@ class Search extends Controller {
   }
 
   public function index() {
-    $this->view->render_search_page_template('search/index');
+    $this->view->render_search_page_template('search/index',true);
   }
 
   public function search() {
