@@ -70,8 +70,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span data-role="facet-label">Nâng Cao</span><i class="caret"></i>
           </a>
-            <div class="dropdown-menu" style="background-color:white">
-              <div class="row m-container">
+            <div class="dropdown-menu" style="background-color:white" id="settingsMenu">
+              <div class="row m-container" style="background-color:white">
                 <div class="col-md-3">
                   <h4>Loại Bất Động Sản</h4>
                   <input type="radio" name="property_type" value="pt0" checked> Bất Kỳ<br>
