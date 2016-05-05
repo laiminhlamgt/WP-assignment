@@ -5,9 +5,9 @@ $numOfResult = count($this->lstHouse);
 function render_thumnail($house) {
   $thumbnail = '<div class="thumbnail" style="margin-top: 20px;">
                   <div class="image">
-                    <img class="d-image-img pending image" image-id="' .
+                    <img class="d-image-img pending" image-id="' .
                       $house['picture1_id'] .
-                      '" img-max-width="1200" img-max-height="500" />
+                      '" img-max-width="225" img-max-height="176" />
                   </div>
                   <div class="caption">
                     <div class="info">

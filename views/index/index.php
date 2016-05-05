@@ -1,8 +1,8 @@
 <!-- Duong Tran Begin : Demo -->
 <!-- 1. input for upload image -->
-<!-- 
-description : 
-1.1 vd nhu muon upload 1 tam hinh trong 1 bai post, de cai doan duoi trong cai form create post, sau do post cai form do, server se nhan $_POST['xyz'] chinh la id cua hinh, save vao bang post la ok. neu la edit hinh, thi de cai id hinh vao trong value truoc , vd nhu value='1'. 
+<!--
+description :
+1.1 vd nhu muon upload 1 tam hinh trong 1 bai post, de cai doan duoi trong cai form create post, sau do post cai form do, server se nhan $_POST['xyz'] chinh la id cua hinh, save vao bang post la ok. neu la edit hinh, thi de cai id hinh vao trong value truoc , vd nhu value='1'.
 1.2 img-max-height va img-max-width la 2 thong so de dieu chinh size hinh hien thi, co the khai bao 1 trong 2, hoac ko khai bao thi se hien thi theo original size -->
 <p>phai dang nhap trc nha</p>
 
@@ -11,7 +11,7 @@ description :
 </div>
 
 <!-- 2. img tag for show image -->
-<!-- 
+<!--
 description:
 2.1 vd nhu muon hien thi hinh anh cua 1 bai post, de cai id hinh vao trong image-id ben duoi.
 2.2 img-max-height va img-max-width la 2 thong so de dieu chinh size hinh hien thi (nhu 1.2)
