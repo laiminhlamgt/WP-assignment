@@ -16,5 +16,10 @@ abstract class DashboardFileDirEnum {
 	const CHART = 'scr/charts/';
 }
 
+abstract class PostStatus {
+    const Pending = 1;
+    const Approved = 2;
+    const Edited = 3;
+}
 
 ?>
