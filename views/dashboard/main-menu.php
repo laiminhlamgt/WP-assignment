@@ -14,7 +14,7 @@
 		<div class="d-db-main-menu-item <?php echo $fileName == 'post' ? 'd-db-main-menu-item-active' : ''; ?>">
 			<i class="fa fa-newspaper-o"></i>
 			<span>Posts</span>
-			<a href=""></a>
+			<a href="<?php echo URL . 'dashboard/list_posts';  ?>"></a>
 		</div>
 		
 	</div>

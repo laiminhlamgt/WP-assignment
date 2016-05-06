@@ -81,7 +81,7 @@ class View {
     }
   }
 
-  public function render_search_page_template($contentFile, $isImportSubmitPicture = false) {
+  public function render_search_page_template($contentFile, $isImportSubmitPicture = false,$justShowPostForm = false) {
     echo '<!DOCTYPE html><html><head>';
 
     if ($isImportSubmitPicture) {
@@ -93,15 +93,29 @@ class View {
     require 'views/head.php';
     echo '</head><body>';
 
-    require 'views/header.php';
-    require 'views/searchbar.php';
+    //Duong Tran : just show the create-edit post part in popup window for admin
+    if($justShowPostForm)
+    {
+      ?>
+      <!-- Duong Tran hard code to edit css 1 -->
+      <style>
+      .m-config-search-result{width: 100% !important;}
+      </style>
+      <?php
+      require 'views/' . $contentFile . '.php';
+    }
+    else
+    {
+      require 'views/header.php';
+      require 'views/searchbar.php';
 
-    echo '<div class="m-container"><div class="row m-search-overview">';
-    require 'views/' . $contentFile . '.php';
-    require 'views/rightcontent.php';
-    echo "</div></div>";
+      echo '<div class="m-container"><div class="row m-search-overview">';
+      require 'views/' . $contentFile . '.php';
+      require 'views/rightcontent.php';
+      echo "</div></div>";
 
-    require 'views/footer.php';
+      require 'views/footer.php';
+    }
     echo '</body></html>';
   }
 }
