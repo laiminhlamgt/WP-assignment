@@ -31,14 +31,16 @@ function render_thumnail($house) {
                     <div class="info-bottom">
                       <span class="uploadOwner">' . $house['contact_name'] . '</span>
                     </div>
+                    <span class="post-date">' . $house['updated'] . '</span>
                   </div>
-                  <a href="detail.html" class="link"></a>
+                  <a href="../detail/detail?postId=' . $house['id'] . '" class="link"></a>
+
                   <div class="clearer">
                   </div>
                 </div>';
   echo $thumbnail;
 }
-
+// <a href="../detail/de" class="delete"><img src="'.URL.'public/images/delete.png" alt="del" height="20" width="20" class="delete"> </a>
  ?>
 
 <!-- Start of search result + left detail -->

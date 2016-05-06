@@ -169,12 +169,24 @@ body {
   bottom: 5px;
 }
 
-.thumbnail .info-bottom > span {
+.thumbnail .info-bottom > .uploadOwner {
   font-size: 12px;
 }
 
-.thumbnail .info-bottom > span::before {
+.thumbnail .info-bottom > .uploadOwner::before {
   content: 'Đăng bởi ';
+}
+
+.thumbnail .post-date {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.thumbnail .delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .thumbnail a {
