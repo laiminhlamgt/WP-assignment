@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 06, 2016 at 09:12 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Host: localhost
+-- Generation Time: May 06, 2016 at 09:52 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `wp_assignment_semi`
 --
+DROP DATABASE `wp_assignment_semi`;
 CREATE DATABASE IF NOT EXISTS `wp_assignment_semi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `wp_assignment_semi`;
 
@@ -130,7 +131,7 @@ CREATE TABLE `house` (
   `is_use_user_contact` tinyint(1) DEFAULT NULL,
   `picture1_id` int(11) DEFAULT NULL,
   `picture2_id` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime DEFAULT NULL,
   `active` tinyint(1) DEFAULT '1',
   `status` int(11) DEFAULT NULL
@@ -141,9 +142,9 @@ CREATE TABLE `house` (
 --
 
 INSERT INTO `house` (`id`, `type_of_house_id`, `location_id`, `price`, `area`, `address`, `number_of_floor`, `number_of_room`, `number_of_restroom`, `post_title`, `post_description`, `contact_name`, `contact_address`, `telephone_number`, `mobile_number`, `email`, `user_id`, `is_use_user_contact`, `picture1_id`, `picture2_id`, `created`, `updated`, `active`, `status`) VALUES
-(1, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Phòng trọ giá rẻ Q.11', 'Phòng trọ cho thuê Q.11.\r\nDiện tích 16 m2. Giá 1tr8. Phòng đẹp mới xây, sạch sẽ, thoáng mát, an ninh. Giờ giấc tự do. Có chỗ để xe riêng. Điện nước có đồng hồ riêng. Wifi cáp. Đường rộng 12m, bảo vệ 24/7.\r\nLiên hệ 0909123456', 'Người Đầu Tiên', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
-(2, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cho thuê Kiot trước Đại học Bách Khoa', 'Kiot trước Đại học Bách Khoa là một nơi cực kì thoáng mát :''(', 'Người Thứ Hai', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
-(3, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Bán Khu đất hấp dẫn ở quận 10', 'Khu đất được cấp sổ đỏ, trung tâm thành phố, không thể bỏ qua XD', 'Minh Lâm', NULL, NULL, '0909123456', NULL, 5, NULL, 13, NULL, NULL, NULL, 1, NULL);
+(1, 5, NULL, '1800000', '16', 'Quận 11', NULL, NULL, NULL, 'Phòng trọ giá rẻ Q.11', 'Phòng trọ cho thuê Q.11.\r\nDiện tích 16 m2. Giá 1tr8. Phòng đẹp mới xây, sạch sẽ, thoáng mát, an ninh. Giờ giấc tự do. Có chỗ để xe riêng. Điện nước có đồng hồ riêng. Wifi cáp. Đường rộng 12m, bảo vệ 24/7.\r\nLiên hệ 0909123456', 'Người Đầu Tiên', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:00:00', NULL, 1, NULL),
+(2, 6, NULL, '3000000', '20', 'Quận 10', NULL, NULL, NULL, 'Cho thuê Kiot trước Đại học Bách Khoa', 'Kiot trước Đại học Bách Khoa là một nơi cực kì thoáng mát :''(', 'Người Thứ Hai', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:05:00', NULL, 1, NULL),
+(3, 12, NULL, '9999999999', '1000000', 'Quận 10', NULL, NULL, NULL, 'Bán Khu đất hấp dẫn ở quận 10', 'Khu đất được cấp sổ đỏ, trung tâm thành phố, không thể bỏ qua XD', 'Minh Lâm', NULL, NULL, '0909123456', NULL, 5, NULL, 13, NULL, '2016-05-07 03:10:00', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -5882,7 +5883,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `house`
 --
 ALTER TABLE `house`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `location`
 --
