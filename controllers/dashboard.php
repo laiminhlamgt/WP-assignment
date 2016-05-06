@@ -58,6 +58,24 @@ class Dashboard extends Controller {
 
   }
 
+  public function list_posts(){
+    $role = Session::get('role');
+    if ($role != 'admin') {
+      header('Location: index');
+      exit;
+    }
+
+    $is_ajax_call = isset($_GET['page']);
+
+    $page = (isset($_GET['page']) && !empty($_GET['page'])) ? $_GET['page'] : 0;
+    $page = ($page != null && is_numeric ($page)) ? $page : 0;
+
+    $this->view->title ='Admin';
+    $this->view->model = $this->model->list_all_posts($page);
+    $this->view->dashboard_render('list_posts',DashboardFileDirEnum::ROOT,$is_ajax_call);    
+
+  }
+
   public function user_edit_form()
   {
     $role = Session::get('role');

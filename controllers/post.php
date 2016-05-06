@@ -8,8 +8,8 @@ class Post extends Controller {
     $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Đăng tin mới';
   }
-
-  public function index() {
+  //Duong Tran 2016 0507 : edit for using in admin dashboard
+  public function index($dashboard = false) {
     $logged = Session::get('loggedIn');
     if ($logged == false) {
       header('Location: index');
@@ -29,7 +29,8 @@ class Post extends Controller {
 
     $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
     $this->view->lstDistrict = $this->model->getLstDistrict();
-    $this->view->render_search_page_template('post/index', true);
+    
+    $this->view->render_search_page_template('post/index', true, $dashboard);
   }
 
   public function getLstWards() {

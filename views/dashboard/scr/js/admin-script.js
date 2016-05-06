@@ -116,3 +116,9 @@ function DeleteUser()
     });
 
 }
+
+function EditPost(id) {
+       newwindow=window.open(Define_URL + 'post/index/true','Create Post','height=500,width=1000');
+       if (window.focus) {newwindow.focus()}
+       return false;
+}
