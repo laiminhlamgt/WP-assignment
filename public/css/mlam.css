@@ -136,6 +136,18 @@ body {
   padding: 6px 12px;
 }
 
+.thumbnail .title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #bd1000;
+}
+
+.thumbnail .tag {
+  padding-right: 20px;
+  font-size: 14px;
+  /*font-weight: 400;*/
+}
+
 .thumbnail .address {
   font-size: 14px;
   font-weight: 400;

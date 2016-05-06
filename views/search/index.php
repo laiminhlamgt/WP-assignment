@@ -11,9 +11,22 @@ function render_thumnail($house) {
                   </div>
                   <div class="caption">
                     <div class="info">
-                      <p class="address">' . $house['address'] . '</p>
-                      <p class="cost">' . $house['price'] . '</p>
-                      <p class="other">2 phòng ngủ</p>
+                      <p class="title">' . $house['post_title'] . '</p>
+                      <table>
+                        <tr>
+                          <td class="tag"><b>Mức giá</b></td>
+                          <td>: ' . $house['price'] . ' VNĐ</td>
+                        </tr>
+                        <tr>
+                          <td class="tag"><b>Diện tích</b></td>
+                          <td>: ' . $house['area'] . ' m2</td>
+                        </tr>
+                        <tr>
+                          <td class="tag"><b>Khu vực</b></td>
+                          <td>: ' . $house['address'] . '</td>
+                        </tr>
+                      </table>
+
                     </div>
                     <div class="info-bottom">
                       <span class="uploadOwner">' . $house['contact_name'] . '</span>
