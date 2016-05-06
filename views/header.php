@@ -87,7 +87,7 @@
         </li>
         <?php
         if (Session::get('loggedIn') == true) {
-          $path = (($this->isExistParamInUrl) ? '../' : '') . 'user';
+          $path = (($this->isExistParamInUrl) ? '../' : '') . 'search/mypage?userId=' . Session::get('userId');
           echo '<li>';
           echo '<a href="'.$path.'">TRANG CÁ NHÂN</a>';
           echo '<div class="d-menu-content"></div>';

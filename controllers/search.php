@@ -15,14 +15,15 @@ class Search extends Controller {
   public function search() {
     $this->setExistParamInUrl(true);
     $this->view->lstHouse = $this->model->selectAll();
-    // echo "Have gone to search function in SeachController";
-    // if (isset($_GET['content'])) {
-    //   $content = $_GET['content'];
-    //   echo "{result: $content}";
-    // }
-    // else {
-    //   echo "{result: something}";
-    // }
+    $this->index();
+  }
+
+  public function mypage() {
+    if (!isset($_GET['userId'])) {
+      return;
+    }
+    $this->setExistParamInUrl(true);
+    $this->view->lstHouse = $this->model->selectPostOfUser($_GET['userId']);
     $this->index();
   }
 
