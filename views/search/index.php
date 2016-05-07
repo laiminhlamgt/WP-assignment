@@ -4,11 +4,14 @@ $numOfResult = count($this->lstHouse);
 
 function render_thumnail($house, $isMyPage) {
   if ($isMyPage) {
-    $link = '../post/edit?userId='.Session::get('userId').'&postId='.$house['id'];
+    $link = '../post/edit?postId='.$house['id'];
 
   } else {
     $link = '../detail?postId='.$house['id'];
   }
+  $date = explode(" ",$house['updated'])[0];
+  $date = explode("-", $date);
+  $date = sprintf("Ngày đăng %s/%s/%s", $date[2], $date[1], $date[0]);
 
   $thumbnail = '<div class="thumbnail" style="margin-top: 20px;">
                   <div class="image">
@@ -38,7 +41,7 @@ function render_thumnail($house, $isMyPage) {
                     <div class="info-bottom">
                       <span class="uploadOwner">' . $house['contact_name'] . '</span>
                     </div>
-                    <span class="post-date">' . $house['updated'] . '</span>
+                    <span class="post-date">' . $date . '</span>
                   </div>
                   <a href="' . $link . '" class="link"></a>
 
@@ -63,7 +66,7 @@ function render_thumnail($house, $isMyPage) {
     <br>
     <br>
     <ul>
-      <li><?php echo $numOfResult; ?> Kết Qủa Sắp Xếp Theo</li>
+      <li><?php echo $numOfResult; ?> Kết Quả Sắp Xếp Theo</li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:orange">
           <span data-role="facet-label" style="color:#FF9009">Mới Cập Nhật</span><i class="caret" style="color:#FF9009"></i>

@@ -82,18 +82,18 @@ class PostModel extends Model {
   public function getHouse($postId, $userId) {
     if($userId > 0)
     {
-      $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id';
+      $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id AND active=1';
       $bindValue = array(
         'id' => $postId,
-        'user_id' => $userId
+        'user_id' => $userId,
       );
     }
     else
     {
-      $sql = 'SELECT * FROM house WHERE id=:id';
+      $sql = 'SELECT * FROM house WHERE id=:id AND active=1';
       $bindValue = array(
         'id' => $postId
-      ); 
+      );
     }
 
     return $this->db->select($sql, $bindValue);
@@ -101,6 +101,7 @@ class PostModel extends Model {
 
   public function editHouse($house) {
     $condition = 'id='.$house->postId;
+    $date = date("Y-m-d H:i:s");
 
     $bindValue = array(
       'type_of_house_id' => $house->typeOfHouseId,
@@ -122,7 +123,17 @@ class PostModel extends Model {
       'mobile_number' => $house->mobile,
       'email' => $house->email,
       'user_id' => $house->userId,
-      'updated' => 'now()'
+      'updated' => $date
+    );
+
+    return $this->db->update('house', $bindValue, $condition);
+  }
+
+  public function deleteHouse($postId) {
+    $condition = 'id='.$postId;
+
+    $bindValue = array(
+      'active' => '0'
     );
 
     return $this->db->update('house', $bindValue, $condition);

@@ -205,14 +205,14 @@
           (Bạn có thể nhập tối đa 1 ảnh và mỗi ảnh nặng không quá 4MB)
         </p>
         <div class='d-image-input-wrapper'>
-          <input name='image' img-max-height="500" img-max-width="1200" class='d-image-input pending' type='text'/>
+          <input name='image' img-max-height="500" img-max-width="1200" class='d-image-input pending' type='text'
+          <?php
+          if (isset($this->picture1Id)) {
+            echo "value='$this->picture1Id'";
+          }
+          ?>
+          />
         </div>
-        <?php
-        if (isset($this->picture1Id)) {
-          echo "<img class='d-image-img pending' image-id='$this->picture1Id' img-max-width='1200' img-max-height='500' />";
-        }
-         ?>
-
       </div>
     </div>
     <!-- Thong tin lien he -->
@@ -256,12 +256,15 @@
       if (isset($this->isEditMode) && $this->isEditMode == true) {
         $name = 'update';
         $value = 'Cập nhật';
+
+        echo '<input type="submit" name="delete" value="Xóa" class="btn btn-danger" style="margin-right:10px">';
+
       } else {
         $name = 'create';
         $value = 'Đăng tin';
       }
 
-      echo '<input type="submit" name="'.$name.'" value="'.$value.'" class="l-input l-btn-primary">'
+      echo '<input type="submit" name="'.$name.'" value="'.$value.'" class="btn btn-warning">'
        ?>
 
     </div>

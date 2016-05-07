@@ -8,11 +8,11 @@ class Post extends Controller {
     $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Đăng tin mới';
   }
-  
+
   public function index() {
     $logged = Session::get('loggedIn');
     if ($logged == false) {
-      header('Location: index');
+      header('Location: error');
       exit;
     }
 
@@ -79,6 +79,16 @@ class Post extends Controller {
 
   public function post() {
     $this->setExistParamInUrl(true);
+
+    if (isset($_POST['delete'])) {
+      $result = $this->model->deleteHouse(Session::get('postId'));
+      $this->view->result = ($result->successful)
+        ? 'Đã xóa bài đăng'
+        : 'Xảy ra lỗi trong quá trình xử lí';
+
+      $this->view->render_search_page_template('post/post-result',false,isset($_POST['dashboard']));
+      return;
+    }
     $isValid = true;
     $newHouse = $this->_initHouse();
 
@@ -227,16 +237,23 @@ class Post extends Controller {
   public function edit() {
     $logged = Session::get('loggedIn');
     if ($logged == false) {
-      header('Location: index');
+      header('Location: ../error');
       exit;
     }
 
-    if (!isset($_GET['userId']) || !isset($_GET['postId'])) {
+    if (!isset($_GET['postId'])) {
       return;
     }
 
     $this->setExistParamInUrl(true);
-    $house = $this->model->getHouse($_GET['postId'], $_GET['userId'])[0];
+    $house = $this->model->getHouse($_GET['postId'], SESSION::get('userId'));
+    if (count($house) > 0) {
+      $house = $house[0];
+
+    } else {
+      header('Location: ../error');
+      exit;
+    }
 
     Session::set('postId', $house['id']);
     $this->view->isEditMode = true;
