@@ -7,7 +7,7 @@ function render_thumnail($house, $isMyPage) {
     $link = '../post/edit?postId='.$house['id'];
 
   } else {
-    $link = '../detail?postId='.$house['id'];
+    $link = '../detail/index?postId='.$house['id'];
   }
   $date = explode(" ",$house['updated'])[0];
   $date = explode("-", $date);

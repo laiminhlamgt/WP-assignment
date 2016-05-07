@@ -20,15 +20,6 @@ class SearchModel extends Model {
     return $this->db->select($sql, $bindValue);
   }
 
-  public function selectPost($postId) {
-    $sql = 'SELECT * FROM house WHERE user_id=:user_id';
-    $bindValue = array(
-      'user_id' => $userId,
-      'id'=> $postId
-    );
-    return $this->db->select($sql, $bindValue);
-  }
-
 }
 
 
