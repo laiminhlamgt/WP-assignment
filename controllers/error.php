@@ -10,7 +10,7 @@ class Error extends Controller {
     $this->view->title = 'Lỗi 404';
     $this->view->error = 404;
     // $this->view->msg = 'This page doesnt exists';
-    $this->view->render('error/index', $noIncludeHeaderAndFooter = true);
+    $this->view->render('error/index');
   }
 
 }
