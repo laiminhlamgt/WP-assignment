@@ -1,8 +1,10 @@
 <!-- Start of search result + left detail -->
 <div class="col-md-9 m-config-search-result">
   <h2 style="color:#bd1000;text-align:center;">Đăng tin bất động sản</h2>
-
-  <form action="post/post" method="post" onsubmit="return validateForm()">
+  <?php $action = (isset($this->isEditMode) && $this->isEditMode == true)
+          ? 'post'
+          : 'post/post' ?>
+  <form action="<?php echo $action ?>" method="post" onsubmit="return validateForm()">
     <div class="l-info-box">
       <h3 class="l-title">Thông tin cơ bản</h3>
       <div class="l-info-item">
@@ -18,7 +20,12 @@
           foreach ($this->lstTypeOfHouse as $key => $element) {
             $id = $element['id'];
             $name = $element['name'];
-            echo "<option value='$id'>$name</option>";
+
+            if (isset($this->typeOfHouseId) && $this->typeOfHouseId == $id) {
+              echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+            } else {
+              echo "<option value='$id'>$name</option>";
+            }
           }
            ?>
         </select>
@@ -32,35 +39,97 @@
           foreach ($this->lstDistrict as $key => $element) {
             $id = $element['id'];
             $name = $element['name'];
-            echo "<option value='$id'>$name</option>";
+
+            if (isset($this->districtId) && $this->districtId == $id) {
+              echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+            } else {
+              echo "<option value='$id'>$name</option>";
+            }
           }
            ?>
         </select>
         <select class="l-input l-input-select" name="ward" id="ward">
           <option value="-1">-- Chọn Phường/Xã --</option>
+          <?php
+          if (isset($this->lstWards)) {
+            foreach ($this->lstWards as $key => $element) {
+              $id = $element['id'];
+              $name = $element['name'];
+
+              if (isset($this->wardId) && $this->wardId == $id) {
+                echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+              } else {
+                echo "<option value='$id'>$name</option>";
+              }
+            }
+          }
+           ?>
         </select>
         <select class="l-input l-input-select" name="street" id="street">
           <option value="-1">-- Chọn Đường/Phố --</option>
+          <?php
+          if (isset($this->lstStreets)) {
+            foreach ($this->lstStreets as $key => $element) {
+              $id = $element['id'];
+              $name = $element['name'];
+
+              if (isset($this->streetId) && $this->streetId == $id) {
+                echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+              } else {
+                echo "<option value='$id'>$name</option>";
+              }
+            }
+          }
+           ?>
         </select>
         <select class="l-input l-input-select" name="type_of_project" id="project">
           <option value="-1">-- Chọn dự án --</option>
+          <?php
+          if (isset($this->lstProjects)) {
+            foreach ($this->lstProjects as $key => $element) {
+              $id = $element['id'];
+              $name = $element['name'];
+
+              if (isset($this->projectId) && $this->projectId == $id) {
+                echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+              } else {
+                echo "<option value='$id'>$name</option>";
+              }
+            }
+          }
+           ?>
         </select>
       </div>
       <div class="l-info-item">
         <div class="l-info-item-col-3">
           <label>Giá</label>
-          <input type="text" class="l-input" name="price" placeholder="VNĐ/tháng">
+          <input type="text" class="l-input" name="price" placeholder="VNĐ/tháng"
+          <?php
+          if (isset($this->price)) {
+            echo 'value="'. $this->price .'"';
+          }
+           ?>>
         </div>
         <div class="l-info-item-col-3">
           <label>Diện tích</label>
-          <input type="text" class="l-input" name="area" placeholder="mét vuông">
+          <input type="text" class="l-input" name="area" placeholder="mét vuông"
+          <?php
+          if (isset($this->area)) {
+            echo 'value="'. $this->area .'"';
+          }
+           ?>>
         </div>
         <div class="l-clearer">
         </div>
       </div>
       <div class="l-info-item">
         <label>Địa chỉ</label>
-        <input type="text" class="l-input l-input-long" name="address">
+        <input type="text" class="l-input l-input-long" name="address"
+        <?php
+        if (isset($this->address)) {
+          echo 'value="'. $this->address .'"';
+        }
+         ?>>
       </div>
     </div>
     <!-- Thong tin khac -->
@@ -69,15 +138,30 @@
       <div class="l-info-item">
         <div class="l-info-item-col-3">
           <label>Số tầng</label>
-          <input type="text" class="l-input" name="num_floor">
+          <input type="text" class="l-input" name="number_of_floor"
+          <?php
+          if (isset($this->numOfFloor)) {
+            echo 'value="'. $this->numOfFloor .'"';
+          }
+           ?>>
         </div>
         <div class="l-info-item-col-3">
           <label>Số phòng</label>
-          <input type="text" class="l-input" name="num_room">
+          <input type="text" class="l-input" name="number_of_room"
+          <?php
+          if (isset($this->numOfRoom)) {
+            echo 'value="'. $this->numOfRoom .'"';
+          }
+           ?>>
         </div>
         <div class="l-info-item-col-3">
           <label>Số toilet</label>
-          <input type="text" class="l-input" name="num_toilet">
+          <input type="text" class="l-input" name="number_of_restroom"
+          <?php
+          if (isset($this->numOfRestroom)) {
+            echo 'value="'. $this->numOfRestroom .'"';
+          }
+           ?>>
         </div>
         <div class="l-clearer">
         </div>
@@ -94,15 +178,23 @@
         <span class="l-required" id="err-title">
         <?php echo (isset($this->errTitle)) ? $this->errTitle : ''; ?>
         </span>
-        <input type="text" class="l-input l-input-long" name="title">
+        <input type="text" class="l-input l-input-long" name="title"
+        <?php
+        if (isset($this->title)) {
+          echo 'value="'. $this->title .'"';
+        }
+         ?>>
       </div>
       <div class="l-info-item">
         <label>Nội dung mô tả</label> <span class="l-required">(*)</span>
         <span class="l-required" id="err-description">
         <?php echo (isset($this->errDescription)) ? $this->errDescription : ''; ?>
         </span>
-        <textarea class="l-input l-input-long" rows="10" cols="30" name="description">
-        </textarea>
+        <textarea class="l-input l-input-long" rows="10" cols="30" name="description"><?php
+        if (isset($this->description)) {
+          echo $this->description;
+        }
+         ?></textarea>
       </div>
       <div class="l-info-item">
         <label>Cập nhật hình ảnh</label>
@@ -112,6 +204,12 @@
         <div class='d-image-input-wrapper'>
           <input name='image' img-max-height="500" img-max-width="1200" class='d-image-input pending' type='text'/>
         </div>
+        <?php
+        if (isset($this->picture1Id)) {
+          echo "<img class='d-image-img pending' image-id='$this->picture1Id' img-max-width='1200' img-max-height='500' />";
+        }
+         ?>
+
       </div>
     </div>
     <!-- Thong tin lien he -->
@@ -151,7 +249,18 @@
     </div>
 
     <div class="l-btnsubmit">
-      <input type="submit" name="submit" value="Đăng tin" class="l-input l-btn-primary">
+      <?php
+      if (isset($this->isEditMode) && $this->isEditMode == true) {
+        $name = 'update';
+        $value = 'Cập nhật';
+      } else {
+        $name = 'create';
+        $value = 'Đăng tin';
+      }
+
+      echo '<input type="submit" name="'.$name.'" value="'.$value.'" class="l-input l-btn-primary">'
+       ?>
+
     </div>
   </form>
 

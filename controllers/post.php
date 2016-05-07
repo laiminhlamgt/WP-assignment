@@ -29,7 +29,7 @@ class Post extends Controller {
 
     $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
     $this->view->lstDistrict = $this->model->getLstDistrict();
-    
+
     $this->view->render_search_page_template('post/index', true, $dashboard);
   }
 
@@ -79,6 +79,20 @@ class Post extends Controller {
     $this->setExistParamInUrl(true);
     $isValid = true;
     $newHouse = $this->_initHouse();
+
+    $newHouse->userId = SESSION::get('userId');
+    $newHouse->email = $_POST['email'];
+    $newHouse->tel = $_POST['tel'];
+    $newHouse->contactAddress = $_POST['addr'];
+    $newHouse->numOfFloor = $_POST['number_of_floor'];
+    $newHouse->numOfRoom = $_POST['number_of_room'];
+    $newHouse->numOfRestroom = $_POST['number_of_restroom'];
+    $newHouse->address = $_POST['address'];
+    $newHouse->area = $_POST['area'];
+    $newHouse->price = $_POST['price'];
+    $newHouse->streetId = $_POST['street'];
+    $newHouse->wardId = $_POST['ward'];
+    $newHouse->districtId = $_POST['district'];
 
     // validate mobile number
     if (isset($_POST['mobile'])) {
@@ -182,14 +196,22 @@ class Post extends Controller {
       $isValid = false;
     }
 
-    $newHouse->userId = Session::get('userId');
-
     if ($isValid) {
-      $result = $this->model->addNewHouse($newHouse);
+      if(isset($_POST['update'])) {
+        $newHouse->postId = Session::get('postId');
+        $result = $this->model->editHouse($newHouse);
 
-      $this->view->result = ($result->successful)
-        ? 'Đăng tin thành công'
-        : 'Xảy ra lỗi trong quá trình xử lí';
+        $this->view->result = ($result->successful)
+          ? 'Cập nhật thành công'
+          : 'Xảy ra lỗi trong quá trình xử lí';
+
+      } else {
+        $result = $this->model->addNewHouse($newHouse);
+
+        $this->view->result = ($result->successful)
+          ? 'Đăng tin thành công'
+          : 'Xảy ra lỗi trong quá trình xử lí';
+      }
 
       $this->view->render_search_page_template('post/post-result');
 
@@ -199,10 +221,62 @@ class Post extends Controller {
 
   }
 
+  public function edit($dashboard = false) {
+    $logged = Session::get('loggedIn');
+    if ($logged == false) {
+      header('Location: index');
+      exit;
+    }
+
+    if (!isset($_GET['userId']) || !isset($_GET['postId'])) {
+      return;
+    }
+
+    $this->setExistParamInUrl(true);
+    $house = $this->model->getHouse($_GET['postId'], $_GET['userId'])[0];
+
+    Session::set('postId', $house['id']);
+    $this->view->isEditMode = true;
+    $this->view->typeOfHouseId = $house['type_of_house_id'];
+    $this->view->districtId = $house['district_id'];
+    $this->view->wardId = $house['ward_id'];
+    $this->view->streetId = $house['street_id'];
+    // $this->view->projectId = $house['project_id'];
+    $this->view->price = $house['price'];
+    $this->view->area = $house['area'];
+    $this->view->address = $house['address'];
+    $this->view->numOfFloor = $house['number_of_floor'];
+    $this->view->numOfRoom = $house['number_of_room'];
+    $this->view->numOfRestroom = $house['number_of_restroom'];
+    $this->view->title = $house['post_title'];
+    $this->view->description = $house['post_description'];
+    $this->view->picture1Id = $house['picture1_id'];
+    $this->view->fullname = $house['contact_name'];
+    $this->view->contactAddress = $house['contact_address'];
+    $this->view->tel = $house['telephone_number'];
+    $this->view->mobile = $house['mobile_number'];
+    $this->view->email = $house['email'];
+
+    $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
+    $this->view->lstDistrict = $this->model->getLstDistrict();
+    $this->view->lstWards = $this->model->getLstWards($house['district_id']);
+    $this->view->lstStreets = $this->model->getLstStreets($house['district_id']);
+    $this->view->lstProjects = $this->model->getLstProjects($house['district_id']);
+
+    $this->view->render_search_page_template('post/index', true, $dashboard);
+  }
+
+  public function actionEdit($dashboard) {
+
+  }
+
   private function _initHouse() {
     ob_start();
+    $newHouse->userId = null;
     $newHouse->typeOfHouseId = null;
-    $newHouse->locationId = null;
+    $newHouse->streetId = null;
+    $newHouse->wardId = null;
+    $newHouse->districtId = null;
     $newHouse->price = null;
     $newHouse->area = null;
     $newHouse->address = null;

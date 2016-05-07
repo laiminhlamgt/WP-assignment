@@ -2,7 +2,14 @@
 
 $numOfResult = count($this->lstHouse);
 
-function render_thumnail($house) {
+function render_thumnail($house, $isMyPage) {
+  if ($isMyPage) {
+    $link = '../post/edit?userId='.Session::get('userId').'&postId='.$house['id'];
+
+  } else {
+    $link = '../detail?postId='.$house['id'];
+  }
+
   $thumbnail = '<div class="thumbnail" style="margin-top: 20px;">
                   <div class="image">
                     <img class="d-image-img pending" image-id="' .
@@ -33,16 +40,20 @@ function render_thumnail($house) {
                     </div>
                     <span class="post-date">' . $house['updated'] . '</span>
                   </div>
-                  <a href="../detail/detail?postId=' . $house['id'] . '" class="link"></a>
+                  <a href="' . $link . '" class="link"></a>
 
                   <div class="clearer">
                   </div>
                 </div>';
   echo $thumbnail;
 }
-// <a href="../detail/de" class="delete"><img src="'.URL.'public/images/delete.png" alt="del" height="20" width="20" class="delete"> </a>
- ?>
 
+ ?>
+ <!-- <a href="../detail/detail?postId=' . $house['id'] . '" class="link"></a> -->
+ <!-- <div class="delete">
+   <a href="../detail/de" class="delete"> </a>
+   <img src="'.URL.'public/images/delete.png" alt="del" height="20" width="20" class="delete">
+ </div> -->
 <!-- Start of search result + left detail -->
 <div class="col-md-9 m-config-search-result">
 
@@ -77,7 +88,7 @@ function render_thumnail($house) {
   <?php
 
     foreach ($this->lstHouse as $key => $house) {
-      render_thumnail($house);
+      render_thumnail($house, $this->isMyPage);
     }
 
   } else {

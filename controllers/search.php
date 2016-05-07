@@ -6,6 +6,7 @@ class Search extends Controller {
     parent::__construct();
     // $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Tìm kiếm';
+    $this->view->isMyPage = false;
   }
 
   public function index() {
@@ -23,6 +24,8 @@ class Search extends Controller {
       return;
     }
     $this->setExistParamInUrl(true);
+    $this->view->title = 'Trang của tôi';
+    $this->view->isMyPage = true;
     $this->view->lstHouse = $this->model->selectPostOfUser($_GET['userId']);
     $this->index();
   }

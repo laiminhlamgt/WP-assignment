@@ -56,7 +56,9 @@ class PostModel extends Model {
   public function addNewHouse($newHouse) {
     $bindValue = array(
       'type_of_house_id' => $newHouse->typeOfHouseId,
-      'location_id' => $newHouse->locationId,
+      'district_id' => $newHouse->districtId,
+      'ward_id' => $newHouse->wardId,
+      'street_id' => $newHouse->streetId,
       'price' => $newHouse->price,
       'area' => $newHouse->area,
       'address' => $newHouse->address,
@@ -75,6 +77,45 @@ class PostModel extends Model {
     );
 
     return $this->db->insert('house', $bindValue);
+  }
+
+  public function getHouse($postId, $userId) {
+    $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id';
+    $bindValue = array(
+      'id' => $postId,
+      'user_id' => $userId
+    );
+
+    return $this->db->select($sql, $bindValue);
+  }
+
+  public function editHouse($house) {
+    $condition = 'id='.$house->postId;
+
+    $bindValue = array(
+      'type_of_house_id' => $house->typeOfHouseId,
+      'district_id' => $house->districtId,
+      'ward_id' => $house->wardId,
+      'street_id' => $house->streetId,
+      'price' => $house->price,
+      'area' => $house->area,
+      'address' => $house->address,
+      'number_of_floor' => $house->numOfFloor,
+      'number_of_room' => $house->numOfRoom,
+      'number_of_restroom' => $house->numOfRestroom,
+      'post_title' => $house->postTitle,
+      'post_description' => $house->postDescription,
+      'picture1_id' => $house->picture1Id,
+      'contact_name' => $house->contactName,
+      'contact_address' => $house->contactAddress,
+      'telephone_number' => $house->tel,
+      'mobile_number' => $house->mobile,
+      'email' => $house->email,
+      'user_id' => $house->userId,
+      'updated' => 'now()'
+    );
+
+    return $this->db->update('house', $bindValue, $condition);
   }
 
 }
