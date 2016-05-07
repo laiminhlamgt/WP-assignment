@@ -80,11 +80,21 @@ class PostModel extends Model {
   }
 
   public function getHouse($postId, $userId) {
-    $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id';
-    $bindValue = array(
-      'id' => $postId,
-      'user_id' => $userId
-    );
+    if($userId > 0)
+    {
+      $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id';
+      $bindValue = array(
+        'id' => $postId,
+        'user_id' => $userId
+      );
+    }
+    else
+    {
+      $sql = 'SELECT * FROM house WHERE id=:id';
+      $bindValue = array(
+        'id' => $postId
+      ); 
+    }
 
     return $this->db->select($sql, $bindValue);
   }

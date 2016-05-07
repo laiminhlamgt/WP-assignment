@@ -8,8 +8,8 @@ class Post extends Controller {
     $this->view->js = 'views/post/js/script.js';
     $this->view->title = 'Đăng tin mới';
   }
-  //Duong Tran 2016 0507 : edit for using in admin dashboard
-  public function index($dashboard = false) {
+  
+  public function index() {
     $logged = Session::get('loggedIn');
     if ($logged == false) {
       header('Location: index');
@@ -29,8 +29,10 @@ class Post extends Controller {
 
     $this->view->lstTypeOfHouse = $this->model->getLstTypeOfHouse();
     $this->view->lstDistrict = $this->model->getLstDistrict();
+    //Duong Tran 2016 0507 : edit for using in admin dashboard
+    $this->view->isInDashboard = isset($_GET['dashboard']);
 
-    $this->view->render_search_page_template('post/index', true, $dashboard);
+    $this->view->render_search_page_template('post/index', true, isset($_GET['dashboard']));
   }
 
   public function getLstWards() {
@@ -212,16 +214,17 @@ class Post extends Controller {
           ? 'Đăng tin thành công'
           : 'Xảy ra lỗi trong quá trình xử lí';
       }
-
-      $this->view->render_search_page_template('post/post-result');
+      $this->view->render_search_page_template('post/post-result',false,isset($_POST['dashboard']));
 
     } else {
-      $this->view->render_search_page_template('post/index', true);
+      //Duong Tran 2016 0507 : edit for post using in dashboard
+      $this->view->isInDashboard = isset($_POST['dashboard']);
+      $this->view->render_search_page_template('post/index', true, isset($_POST['dashboard']));
     }
 
   }
 
-  public function edit($dashboard = false) {
+  public function edit() {
     $logged = Session::get('loggedIn');
     if ($logged == false) {
       header('Location: index');
@@ -263,7 +266,8 @@ class Post extends Controller {
     $this->view->lstStreets = $this->model->getLstStreets($house['district_id']);
     $this->view->lstProjects = $this->model->getLstProjects($house['district_id']);
 
-    $this->view->render_search_page_template('post/index', true, $dashboard);
+    $this->view->isInDashboard = isset($_GET['dashboard']);
+    $this->view->render_search_page_template('post/index', true, isset($_GET['dashboard']));
   }
 
   public function actionEdit($dashboard) {

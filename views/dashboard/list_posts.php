@@ -32,7 +32,7 @@ if($this->model != null)
 		}
 ?>
 		<tr <?php echo 'id="tr_' . $this->model->data[$i]['id'] . '"'; ?> >
-			<td><i onclick='EditUser(<?php echo $this->model->data[$i]['id']; ?>)' class="fa fa-pencil-square-o"></i></td>
+			<td><i onclick='EditPost(<?php echo $this->model->data[$i]['id']; ?>)' class="fa fa-pencil-square-o"></i></td>
 			<td><img style='margin:0 auto;' class='d-image-img pending' image-id='<?php echo $pictureId; ?>' img-max-width="300" img-max-height="300"  /></td>
 			<td><?php echo $postTitle; ?></td>
 			<td><?php echo $postDescription; ?></td>

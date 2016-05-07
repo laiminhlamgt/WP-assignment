@@ -5,6 +5,9 @@
           ? 'post'
           : 'post/post' ?>
   <form action="<?php echo $action ?>" method="post" onsubmit="return validateForm()">
+    <!-- Duong Tran 2016 0507 : using post in dashboard -->
+    <?php echo $this->isInDashboard ? "<input hidden name='dashboard' />" : ""; ?>
+
     <div class="l-info-box">
       <h3 class="l-title">Thông tin cơ bản</h3>
       <div class="l-info-item">

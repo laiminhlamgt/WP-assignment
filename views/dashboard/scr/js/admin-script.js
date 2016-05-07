@@ -118,7 +118,16 @@ function DeleteUser()
 }
 
 function EditPost(id) {
-       newwindow=window.open(Define_URL + 'post/index/true','Create Post','height=500,width=1000');
+    if(id == 0)
+    {
+       newwindow=window.open(Define_URL + 'post/index?dashboard=true','Create Post','height=500,width=1000');
        if (window.focus) {newwindow.focus()}
-       return false;
+        return false;
+    }
+    else
+    {
+        newwindow=window.open(Define_URL + 'post/edit?dashboard=true&userId=0&postId=' + id,'Create Post','height=500,width=1000');
+       if (window.focus) {newwindow.focus()}
+        return false;
+    }
 }
