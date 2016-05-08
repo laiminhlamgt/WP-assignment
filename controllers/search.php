@@ -38,7 +38,7 @@ class Search extends Controller {
   }
 
   private function _searchContent($content) {
-    return;
+    return $this->model->searchPostByContent($content);        
   }
 
   private function _searchOption() {
