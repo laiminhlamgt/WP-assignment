@@ -9,15 +9,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>index">
-        <img src="<?php echo URL; ?>/public/images/logo.png" alt="logo" />
+      <a href="<?php echo URL; ?>">
+        <img src="<?php echo URL; ?>public/images/logo.png" alt="logo" />
       </a>
     </div>
     <div class="d-navbar-login">
       <ul class="d-clearfix d-navbar-right">
         <li>
           <?php
-          $ref = ($this->isExistParamInUrl) ? '../login' : 'login';
+          $ref = URL . 'login';
 
           if (Session::get('loggedIn') == false) {
             $label = 'ĐĂNG NHẬP';
@@ -82,18 +82,18 @@
           </div>
         </li>
         <li>
-          <a href="<?php echo ($this->isExistParamInUrl) ? '../' : '' ?>help">TRỢ GIÚP</a>
+          <a href="<?php echo URL; ?>>help">TRỢ GIÚP</a>
           <div class="d-menu-content"></div>
         </li>
         <?php
         if (Session::get('loggedIn') == true) {
-          $path = (($this->isExistParamInUrl) ? '../' : '') . 'search/mypage?userId=' . Session::get('userId');
+          $path = URL . 'search/mypage?userId=' . Session::get('userId');
           echo '<li>';
           echo '<a href="'.$path.'">TRANG CÁ NHÂN</a>';
           echo '<div class="d-menu-content"></div>';
           echo '</li>';
 
-          $path = (($this->isExistParamInUrl) ? '../' : '') . 'post';
+          $path = URL . 'post';
           echo '<li>';
           echo '<a href="'.$path.'">ĐĂNG TIN</a>';
           echo '<div class="d-menu-content"></div>';

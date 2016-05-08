@@ -20,20 +20,24 @@ class SearchModel extends Model {
     return $this->db->select($sql, $bindValue);
   }
 
+  public function searchPostByOption($option) {
+
+  }
+
   public function searchPostByContent($content) {
-    $sql = 'SELECT DISTINCT * 
-    FROM house h 
-      LEFT JOIN district d ON h.district_id = d.id 
+    $sql = 'SELECT DISTINCT *
+    FROM house h
+      LEFT JOIN district d ON h.district_id = d.id
       LEFT JOIN ward w ON h.ward_id = w.id
       LEFT JOIN street s ON h.street_id = s.id
-    WHERE h.active = :active 
+    WHERE h.active = :active
       AND (h.post_title LIKE :likecontent
       OR h.post_description LIKE :likecontent
       OR h.contact_name LIKE :likecontent
       OR h.mobile_number LIKE :likecontent
       OR d.name LIKE :likecontent
       OR w.name LIKE :likecontent
-      OR s.name LIKE :likecontent) 
+      OR s.name LIKE :likecontent)
     ';
 
     $bindValue = array(
