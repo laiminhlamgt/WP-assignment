@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 07, 2016 at 11:43 PM
+-- Generation Time: May 08, 2016 at 04:17 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -156,8 +156,8 @@ CREATE TABLE `house` (
 --
 
 INSERT INTO `house` (`id`, `type_of_house_id`, `district_id`, `ward_id`, `street_id`, `price`, `area`, `address`, `number_of_floor`, `number_of_room`, `number_of_restroom`, `post_title`, `post_description`, `contact_name`, `contact_address`, `telephone_number`, `mobile_number`, `email`, `user_id`, `is_use_user_contact`, `picture1_id`, `picture2_id`, `created`, `updated`, `active`, `status`) VALUES
-(1, 5, NULL, NULL, NULL, '1800000', '16', 'Quận 11', NULL, NULL, NULL, 'Phòng trọ giá rẻ Q.11', 'Phòng trọ cho thuê Q.11.\r\nDiện tích 16 m2. Giá 1tr8. Phòng đẹp mới xây, sạch sẽ, thoáng mát, an ninh. Giờ giấc tự do. Có chỗ để xe riêng. Điện nước có đồng hồ riêng. Wifi cáp. Đường rộng 12m, bảo vệ 24/7.\r\nLiên hệ 0909123456', 'Người Đầu Tiên', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:00:00', '2016-05-07 10:46:02', 1, NULL),
-(2, 6, NULL, NULL, NULL, '3000000', '20', 'Quận 10', NULL, NULL, NULL, 'Cho thuê Kiot trước Đại học Bách Khoa', 'Kiot trước Đại học Bách Khoa là một nơi cực kì thoáng mát :''(', 'Người Thứ Hai', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:05:00', '2016-05-07 03:07:00', 1, NULL),
+(1, 5, 11, NULL, NULL, '1800000', '16', 'Quận 11', NULL, NULL, NULL, 'Phòng trọ giá rẻ Q.11', 'Phòng trọ cho thuê Q.11.\r\nDiện tích 16 m2. Giá 1tr8. Phòng đẹp mới xây, sạch sẽ, thoáng mát, an ninh. Giờ giấc tự do. Có chỗ để xe riêng. Điện nước có đồng hồ riêng. Wifi cáp. Đường rộng 12m, bảo vệ 24/7.\r\nLiên hệ 0909123456', 'Người Đầu Tiên', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:00:00', '2016-05-07 10:46:02', 1, NULL),
+(2, 6, 10, NULL, NULL, '3000000', '20', 'Quận 10', NULL, NULL, NULL, 'Cho thuê Kiot trước Đại học Bách Khoa', 'Kiot trước Đại học Bách Khoa là một nơi cực kì thoáng mát :''(', 'Người Thứ Hai', NULL, NULL, '0909123456', NULL, NULL, NULL, NULL, NULL, '2016-05-07 03:05:00', '2016-05-07 03:07:00', 1, NULL),
 (3, 12, 10, 124, 1470, '9999999999', '1000000', 'Quận 10', '0', 5000, 50, 'Bán Khu đất hấp dẫn ở quận 10', 'Khu đất được cấp sổ đỏ, trung tâm thành phố, không thể bỏ qua XD', 'Minh Lâm', '', '', '0909123456', '', 5, NULL, 19, NULL, '2016-05-07 03:10:00', '2016-05-08 00:54:22', 1, NULL),
 (5, 3, 1, 6, 32, '50000000', '100', 'Quận 1', '3', 10, 3, 'Nhà xịn ở trung tâm thành phố', 'Nhà quận 1 cực đã xD', 'Minh Lâm', '', '', '0909123456', 'minhlam@bk.com', 5, NULL, 21, NULL, '2016-05-07 11:13:46', '2016-05-07 20:08:53', 1, NULL),
 (6, 5, 10, -1, -1, '2000000', '16', '', '0', 1, 1, 'Phòng trọ cho thuê', 'Cho thuê phòng trọ gần trường đại học Bách Khoa', 'Minh Lâm', '', '', '0909159653', 'minhlam@bk.com', 5, NULL, 22, NULL, '2016-05-08 01:23:19', '2016-05-07 21:52:11', 1, NULL);
@@ -5448,9 +5448,9 @@ CREATE TABLE `user` (
   `password` char(32) NOT NULL,
   `telephone_number` varchar(12) CHARACTER SET ascii DEFAULT NULL,
   `mobile_number` varchar(12) CHARACTER SET ascii DEFAULT NULL,
-  `role` char(5) NOT NULL DEFAULT 'guest',
-  `active` int(11) NOT NULL DEFAULT '1',
-  `avatar_id` int(11) NOT NULL
+  `role` char(5) DEFAULT 'guest',
+  `active` int(11) DEFAULT '1',
+  `avatar_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -5465,9 +5465,8 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `telep
 (5, 'Lâm', 'Minh', 'minhlam@bk.com', 'd4dd2af04afe267a129ee6a6462b0426', '', '', 'guest', 1, 11),
 (13, 'Trân', 'Bảo', 'baotran@bk.com', 'ab1c0fc125a9ceb3021d5f3987128fcf', '', '', 'guest', 1, 16),
 (17, 'Dương', 'Lập', 'lapduong@bk.com', '4208a3d34b31ad5164ca90b1a9923cbd', NULL, NULL, 'guest', 1, 0),
-(18, 'a', 'a', 's', '04b56386dd2d7e1d17a8122884b5671c', '', '', 'guest', 1, 0),
-(19, 'vvvv', 'b', 'b', 'c3f5e87c4a8af9b89dad64d137a9318e', '', '', 'guest', 1, 0),
-(21, 'i', 'i', 'a', 'd7c0470a801621fbdc0cb1ae1fe71b0c', 'i', 'i', 'guest', 1, 0);
+(22, 'Minh', 'Đức', 'ducminh@bk.com', '5670a6002693e89baaf404fdbaabb5ca', NULL, NULL, 'guest', 1, NULL),
+(23, 'Hiếu', 'Nguyễn', 'huuhieubk@gmail.com', 'f386088d523845829fa171d477994f4d', NULL, NULL, 'guest', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -5923,7 +5922,7 @@ ALTER TABLE `type_of_house`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `ward`
 --
