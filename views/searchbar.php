@@ -1,5 +1,5 @@
 <div class="m-search-wrapper">
-  <form class="well form-search" action="search/search">
+  <form class="well form-search" action="<?php echo URL ?>search/search">
     <div class="m-container">
       <!-- List options -->
       <div style="display: inline-block">

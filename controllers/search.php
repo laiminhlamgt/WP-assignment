@@ -107,8 +107,8 @@ class Search extends Controller {
     }
 
     if (isset($_GET['sarea'])) {
-      $areas = split("-", trim($_GET['sarea']));
-      if (count($areas == 2)) {
+      $areas = explode('-', trim($_GET['sarea']));
+      if (count($areas) == 2) {
         $areamin = $areas[0];
         $areamax = $areas[1];
 
@@ -123,12 +123,17 @@ class Search extends Controller {
 
     if (isset($_GET['snum-of-room'])) {
       $num = trim($_GET['snum-of-room']);
-      if ($streetId > 0) {
+      if ($num > 0) {
         $bindValue['number_of_room'] = $num;
       }
     }
 
-    $this->model->searchPostByOption($bindValue);
+    if (count($bindValue) > 0) {
+      return $this->model->searchPostByOption($bindValue);
+    } else {
+      return null;
+    }
+
 
   }
 

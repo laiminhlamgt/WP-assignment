@@ -61,9 +61,9 @@ function render_thumnail($house, $isMyPage) {
 <div class="col-md-9 m-config-search-result">
 
   <?php if ($numOfResult > 0) { ?>
-    <h4>Tp HCM, Quận 10</h4>
-    <a href="#">Quận 10</a> <span class="glyphicon glyphicon-menu-right"></span> <a href="#">Phường 14</a>
-    <br>
+    <h3>Kết quả tìm kiếm</h3>
+    <!-- <a href="#">Quận 10</a> <span class="glyphicon glyphicon-menu-right"></span> <a href="#">Phường 14</a> -->
+    <!-- <br> -->
     <br>
     <ul>
       <li><?php echo $numOfResult; ?> Kết Quả Sắp Xếp Theo</li>

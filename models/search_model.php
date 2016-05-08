@@ -21,7 +21,57 @@ class SearchModel extends Model {
   }
 
   public function searchPostByOption($option) {
+    $sql = 'SELECT * FROM house WHERE ';
+    $sqlOption = array();
+    $bindValue = array();
 
+    if (isset($option['type_of_house_id'])) {
+      array_push($sqlOption, 'type_of_house_id=:type_of_house_id');
+      $bindValue['type_of_house_id'] = $option['type_of_house_id'];
+    }
+
+    if (isset($option['district_id'])) {
+      array_push($sqlOption, 'district_id=:district_id');
+      $bindValue['district_id'] = $option['district_id'];
+    }
+
+    if (isset($option['ward_id'])) {
+      array_push($sqlOption, 'ward_id=:ward_id');
+      $bindValue['ward_id'] = $option['ward_id'];
+    }
+
+    if (isset($option['street_id'])) {
+      array_push($sqlOption, 'street_id=:street_id');
+      $bindValue['street_id'] = $option['street_id'];
+    }
+
+    if (isset($option['min-price'])) {
+      array_push($sqlOption, 'price>=:minprice');
+      $bindValue['minprice'] = $option['min-price'];
+    }
+
+    if (isset($option['max-price'])) {
+      array_push($sqlOption, 'price<=:maxprice');
+      $bindValue['maxprice'] = $option['max-price'];
+    }
+
+    if (isset($option['min-area'])) {
+      array_push($sqlOption, 'area>=:minarea');
+      $bindValue['minarea'] = $option['min-area'];
+    }
+
+    if (isset($option['max-area'])) {
+      array_push($sqlOption, 'area<=:maxarea');
+      $bindValue['maxarea'] = $option['max-area'];
+    }
+
+    if (isset($option['number_of_room'])) {
+      array_push($sqlOption, 'number_of_room=:number_of_room');
+      $bindValue['number_of_room'] = $option['number_of_room'];
+    }
+
+    $sql .= implode(' AND ', $sqlOption);
+    return $this->db->select($sql, $bindValue);
   }
 
   public function searchPostByContent($content) {
