@@ -75,7 +75,7 @@ class SearchModel extends Model {
   }
 
   public function searchPostByContent($content) {
-    $sql = 'SELECT DISTINCT *
+    $sql = 'SELECT DISTINCT h.*
     FROM house h
       LEFT JOIN district d ON h.district_id = d.id
       LEFT JOIN ward w ON h.ward_id = w.id
