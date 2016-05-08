@@ -1,9 +1,10 @@
 <div class="m-search-wrapper">
-  <form class="well form-search" >
+  <form class="well form-search" action="search/search">
     <div class="m-container">
-      <input type="text" class="span3 search-query m-form-search-custom" placeholder="Search ..." id="m-form-search">
-      <a href="search.html" class="btn btn-success l-btn-primary">Search</a>
+      <input name="content" type="text" class="span3 search-query m-form-search-custom" placeholder="Search ..." id="m-form-search">
+      <input class="btn btn-success l-btn-primary" type="submit" value="Tìm kiếm">
       <!-- List options -->
+
       <ul class = "nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

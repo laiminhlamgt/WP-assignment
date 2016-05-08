@@ -15,7 +15,14 @@ class Search extends Controller {
 
   public function search() {
     $this->setExistParamInUrl(true);
-    $this->view->lstHouse = $this->model->selectAll();
+
+    if (isset($_GET['content'])) {
+      $this->view->lstHouse = $this->_searchContent($_GET['content']);
+
+    } else {
+      $this->view->lstHouse = $this->_searchOption();
+    }
+    // $this->view->lstHouse = $this->model->selectAll();
     $this->index();
   }
 
@@ -28,6 +35,14 @@ class Search extends Controller {
     $this->view->isMyPage = true;
     $this->view->lstHouse = $this->model->selectPostOfUser($_GET['userId']);
     $this->index();
+  }
+
+  private function _searchContent($content) {
+    return;
+  }
+
+  private function _searchOption() {
+    
   }
 
 }
