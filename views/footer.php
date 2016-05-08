@@ -1,10 +1,10 @@
 <div class="d-footer">
   <div class="d-container">
     <ul class="d-clearfix">
-      <li><a href="#">THÔNG TIN HOME.VN</a></li>
-      <li><a href="#">TUYỂN DỤNG</a></li>
-      <li><a href="#">PHẢN HỒI</a></li>
-      <li><a href="#">PHÒNG TRUYỀN THÔNG</a></li>
+      <li><a href="">THÔNG TIN HOME.VN</a></li>
+      <li><a href="">TUYỂN DỤNG</a></li>
+      <li><a href="">PHẢN HỒI</a></li>
+      <li><a href="">PHÒNG TRUYỀN THÔNG</a></li>
       <li></li>
     </ul>
   </div>

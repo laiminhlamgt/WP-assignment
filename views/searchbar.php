@@ -4,7 +4,46 @@
       <input name="content" type="text" class="span3 search-query m-form-search-custom" placeholder="Search ..." id="m-form-search">
       <input class="btn btn-success l-btn-primary" type="submit" value="Tìm kiếm">
       <!-- List options -->
+      <select style="width:250px" name="stype-of-house">
+        <option value="-1">-- Loại nhà đất --</option>
+      </select>
+      <select style="width:150px" name="sdistrict">
+        <option value="-1">-- Quận/Huyện --</option>
+      </select>
+      <select style="width:150px" name="ward" id="sward">
+        <option value="-1">-- Phường/Xã --</option>
+        <?php
+        if (isset($this->lstWards)) {
+          foreach ($this->lstWards as $key => $element) {
+            $id = $element['id'];
+            $name = $element['name'];
 
+            if (isset($this->wardId) && $this->wardId == $id) {
+              echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+            } else {
+              echo "<option value='$id'>$name</option>";
+            }
+          }
+        }
+         ?>
+      </select>
+      <select style="width:200px" name="street" id="sstreet">
+        <option value="-1">-- Đường/Phố --</option>
+        <?php
+        if (isset($this->lstStreets)) {
+          foreach ($this->lstStreets as $key => $element) {
+            $id = $element['id'];
+            $name = $element['name'];
+
+            if (isset($this->streetId) && $this->streetId == $id) {
+              echo '<option value="'.$id.'" selected="selected">'.$name.'</option>';
+            } else {
+              echo "<option value='$id'>$name</option>";
+            }
+          }
+        }
+         ?>
+      </select>
       <ul class = "nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

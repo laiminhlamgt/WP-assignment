@@ -35,6 +35,16 @@ class Post extends Controller {
     $this->view->render_search_page_template('post/index', true, isset($_GET['dashboard']));
   }
 
+  public function getLstTypeOfHouses() {
+    $lstTypes = $this->model->getLstTypeOfHouse();
+    echo json_encode($lstTypes);
+  }
+
+  public function getLstDistricts() {
+    $lstDistricts = $this->model->getLstDistrict();
+    echo json_encode($lstDistricts);
+  }
+
   public function getLstWards() {
     if (isset($_GET['district_id'])) {
       $district_id = $_GET['district_id'];
