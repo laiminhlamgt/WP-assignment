@@ -1,139 +1,110 @@
+<?php
+if (isset($this->house)) {
+  if ($this->house['type_of_house_id'] < 9) {
+    $type = 'Cho thuê bất động sản';
+  } else {
+    $type = 'Mua bán bất động sản';
+  }
 
+  $title = $this->house['post_title'];
+  $description = $this->house['post_description'];
+  $address = $this->house['address'];
+
+  $price = number_format($this->house['price']);
+  $area = $this->house['area'];
+
+  $numOfFloor = $this->house['number_of_floor'];
+  $numOfRoom = $this->house['number_of_room'];
+  $numOfRestroom = $this->house['number_of_restroom'];
+
+  $contactName = $this->house['contact_name'];
+  $mobile = $this->house['mobile_number'];
+  $email = $this->house['email'];
+  $picture1Id = $this->house['picture1_id'];
+}
+ ?>
 <div class="col-md-9">
   <div class="row" style="margin-left:10px">
     <div class="pull-left">
-      Nhà Bán<br>
-      <span style="font-size:25px;">268 Lý Thường Kiệt</span><br>
-      Tp. HCM, Quận 10
+      <h4>
+        <?php echo (isset($type)) ? $type : ''; ?>
+      </h4>
+      <span style="font-size:25px;">
+        <?php echo (isset($title)) ? $title : ''; ?>
+      </span>
+      <br>
+      <span style="font-size:20px;">
+        <?php echo (isset($address)) ? $address : ''; ?>
+      </span>
     </div>
     <div class="pull-right">
-        <span style="font-size:40px;">2.500.000 vnđ</span><br>
-        <div class="m-list-a-tag2">
-          <a href="#" >Ước Tính Giá </a>
-          |
-          <a href="#" > Xem Đánh Gía</a>
-        </div>
+      <span style="font-size:30px;">
+        <?php echo (isset($price)) ? $price : ''; ?> VNĐ
+      </span>
+      <br>
+      <span style="font-size:30px; float:right">
+        <?php echo (isset($area)) ? $area : ''; ?> m2
+      </span>
     </div>
   </div>
-  <br>
-  <div class="row" style="margin-left:10px">
-    <b>2</b>  Gường  <span class="glyphicon glyphicon-asterisk" style="margin-left:10px; margin-right:10px;"></span>
-    <b>2</b>  Nhà Tắm <span class="glyphicon glyphicon-asterisk" style="margin-left:10px; margin-right:10px;"></span>
-    <b>123</b>  m2  <span class="glyphicon glyphicon-asterisk" style="margin-left:10px; margin-right:10px;"></span>
-    <b>365</b>  m Xung Quanh
-  </div>
+  <img class='d-image-img pending' image-id='<?php echo (isset($price)) ? $picture1Id : '' ;?>'
+    img-max-width="800" img-max-height="500" style="margin:0 auto"/>
 
-  <div class="row" style="margin-left:10px">
+
+  <!-- <div class="row" style="margin-left:10px">
+    <img class='d-image-img pending' image-id='<?php //echo $picture1Id ;?>'
+      img-max-width="800" img-max-height="500" />
     <div id="imgslide" class="owl-carousel owl-theme">
-      <div class="item"><img src="<?php echo URL; ?>public/images/img1.jpg" alt="" /></div>
-      <div class="item"><img src="<?php echo URL; ?>public/images/img2.jpg" alt="" /></div>
-      <div class="item"><img src="<?php echo URL; ?>public/images/img3.jpg" alt="" /></div>
+      <div class="item"><img src="<?php //echo URL; ?>public/images/img1.jpg" alt="" /></div>
+      <div class="item"><img src="<?php //echo URL; ?>public/images/img2.jpg" alt="" /></div>
+      <div class="item"><img src="<?php //echo URL; ?>public/images/img3.jpg" alt="" /></div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="row" style="margin-left:10px; background-color:#fdd59e">
-    <ul class="nav navbar-nav">
-      <li class="active" style="font-size:20px; margin-right:20px;">
-        <a href="#m-pdetails">Chi Tiết Nhà</a>
-      </li>
-      <li class="active" style="font-size:20px; margin-right:20px;">
-        <a href="#m-sneighborhood">Trường Học & Dân Cư</a>
-      </li>
-      <li class="active" style="font-size:20px; margin-right:20px;">
-        <a href="#m-poptions">Tùy Chọn Thanh Toán</a>
-      </li>
-      <li class="active" style="font-size:20px; margin-right:20px;">
-        <a href="#m-phistory">Lịch Sử Nhà</a>
-      </li>
-    </ul>
-  </div>
   <!-- Start of pdetail-->
   <br>
   <div class="row" style="margin-left:10px">
     <div id="m-pdetails">
-      <h2 class="title-section">Chi Tiết Nhà</h2>
+      <h3 class="title-section">Mô Tả Chi Tiết</h3>
       <hr class="horizontal-line" />
+      <p>
+        <?php echo (isset($description)) ? $description : ''; ?>
+      </p>
 
       <div class="row">
-        <div class="col-md-2">
-          <h3 style="margin:0; padding:0;">Nhà Mở</h3>
+        <div class="col-md-6">
+          <h3>Liên hệ</h3>
+          <table>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Tên liên lạc</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($contactName)) ? $contactName : '';?></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Mobile</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($mobile)) ? $mobile : '';?></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Email</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($email)) ? $email : '';?></td>
+            </tr>
+          </table>
         </div>
-        <div class="col-md-5">
-          Chưa có tại thời điểm hiện tại
-        </div>
-        <div class="col-md-5">
-          <a href="#" style="color:#FF9009" class="pull-right">Yêu Cầu Xem Riêng Tư</a>
-        </div>
-      </div>
-
-      <hr>
-      <div class="row">
-        <div class="col-md-2">
-          <h3 style="margin:0; padding:0;">Tổng Quan</h3>
-        </div>
-        <div class="col-md-5" style="margin-top:20px;">
-          <b>Sự Kiện Chính</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li>Loại: Nhà Đơn</li>
-            <li>Nhà 1 Gia Đình</li>
-            <li>Năm Xây Dựng: 1966</li>
-            <li>Giá/m2: 300.000 vnđ</li>
-            <li>8 ngày trên MBNĐ</li>
-            <li>Trạng Thái: Ngẫu Nhiên</li>
-          </ul>
-        </div>
-        <div class="col-md-5" style="margin-top:20px;">
-          <b>Schools</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li style="color:#FF9009">Trường Đại Học Bách Khoa</li>
-            <li style="color:#FF9009">Trường Đại Học Kinh Tế</li>
-            <li style="color:#FF9009">Trường THPT Lý Thường Kiệt</li>
-          </ul>
-        </div>
-      </div>
-
-      <hr>
-      <div class="row">
-        <div class="col-md-2">
-          <h3 style="margin:0; padding:0;">Tính Năng</h3>
-        </div>
-        <div class="col-md-5" style="margin-top:20px;">
-          <b>Phòng Ngủ</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li>Phòng Ngủ: ....</li>
-            <li>Phòng Ngủ: ....</li>
-            <li>Phòng Ngủ: ....</li>
-            <li>Phòng Ngủ: ....</li>
-          </ul>
-          <br>
-          <b>Nhà Bếp và Nhà Ăn</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li>Nhà Bếp và Nhà Ăn ....</li>
-            <li>Nhà Bếp và Nhà Ăn ....</li>
-            <li>Nhà Bếp và Nhà Ăn ....</li>
-            <li>Nhà Bếp và Nhà Ăn ....</li>
-           </ul>
-        </div>
-        <div class="col-md-5" style="margin-top:20px;">
-          <b>Phòng Tắm</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li >Phòng Tắm 1</li>
-            <li >Phòng Tắm 2</li>
-            <li >Phòng Tắm 3</li>
-          </ul>
-          <br>
-          <b>Phòng Khác</b>
-          <hr style="margin:0;">
-          <ul style="margin-left:25px;">
-            <li >Phòng Khác 1</li>
-            <li >Phòng Khác 2</li>
-            <li >Phòng Khác 3</li>
-          </ul>
+        <div class="col-md-6">
+          <h3>Thông tin khác</h3>
+          <table>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Số tầng</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($numOfFloor)) ? $numOfFloor : '';?></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Số phòng</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($numOfRoom)) ? $numOfRoom : '';?></td>
+            </tr>
+            <tr>
+              <td style="padding-right: 50px;padding-bottom: 10px"><strong>Số toilet</strong></td>
+              <td style="padding-bottom: 10px"><?php echo (isset($numOfRestroom)) ? $numOfRestroom : '';?></td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ function render_thumnail($house, $isMyPage) {
                       <table>
                         <tr>
                           <td class="tag"><b>Mức giá</b></td>
-                          <td>: ' . $house['price'] . ' VNĐ</td>
+                          <td>: ' . number_format($house['price']) . ' VNĐ</td>
                         </tr>
                         <tr>
                           <td class="tag"><b>Diện tích</b></td>
