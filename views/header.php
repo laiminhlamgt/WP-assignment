@@ -82,7 +82,7 @@
           </div>
         </li>
         <li>
-          <a href="<?php echo URL; ?>>help">TRỢ GIÚP</a>
+          <a href="<?php echo URL; ?>help">TRỢ GIÚP</a>
           <div class="d-menu-content"></div>
         </li>
         <?php

@@ -1,6 +1,6 @@
 <div class="d-login-wrapper">
   <div class="d-container">
-    <form class="d-login-form" method="post" action="signup/signup" onsubmit="return validateForm()">
+    <form class="d-login-form" method="post" action="<?php echo URL; ?>signup/signup" onsubmit="return validateForm()">
       <div class="d-login-title">
         Đăng Kí
       </div>
@@ -25,7 +25,7 @@
         <!-- <button class="d-login-submitbtn" type="submit" name="signup">Đăng kí</button> -->
       </div>
       <div class="d-login-signup">
-        Đã có tài khoản? <a href="login">Đăng nhập</a>
+        Đã có tài khoản? <a href="<?php echo URL; ?>login">Đăng nhập</a>
       </div>
     </form>
   </div>

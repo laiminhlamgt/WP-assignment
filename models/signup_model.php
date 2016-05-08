@@ -31,10 +31,20 @@ class SignupModel extends Model {
       'telephone_number' => $newUser->tel,
       'mobile_number' => $newUser->mobile,
       'role' => $newUser->role,
+      'active' => '1',
       'avatar_id' => $newUser->avatarId
     );
 
     return $this->db->insert('user', $bindValue);
+  }
+
+  public function selectUser($email) {
+    $sql = 'SELECT * FROM user WHERE email=:email';
+    $bindValue = array(
+      'email' => $email
+    );
+
+    return $this->db->select($sql, $bindValue);
   }
 
 }

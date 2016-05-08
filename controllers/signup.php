@@ -12,7 +12,7 @@ class Signup extends Controller {
   public function index() {
     $logged = Session::get('loggedIn');
     if ($logged == true) {
-      header('Location: index');
+      header('Location: '.URL);
       exit;
     }
 
@@ -22,6 +22,12 @@ class Signup extends Controller {
   public function signup() {
     $this->setExistParamInUrl(true);
     $isValid = true;
+
+    if ($this->isExistAccount($_POST['email'])) {
+      $this->view->err = 'Tài khoản đã được dùng để đăng kí';
+      $this->index();
+    }
+
     $newUser = $this->_initUser();
 
     // validate mobile number
@@ -120,9 +126,13 @@ class Signup extends Controller {
     if ($isValid) {
       $result = $this->model->addNewUser($newUser);
 
-      $this->view->result = ($result->successful)
-        ? 'Đăng kí thành công'
-        : 'Xảy ra lỗi trong quá trình xử lí';
+      if ($result->successful) {
+        $this->view->result = 'Đăng kí thành công';
+        $this->view->isErr = false;
+      } else {
+        $this->view->result = 'Xảy ra lỗi trong quá trình xử lí';
+        $this->view->isErr = true;
+      }
 
       $this->view->render('signup/signup-result');
 
@@ -147,6 +157,11 @@ class Signup extends Controller {
     return $newUser;
   }
 
+  public function isExistAccount($email) {
+    $result = $this->model->selectUser($email);
+    return (count($result) > 0);
+  }
+
   private function _isMobileNumber($number) {
     return preg_match("/^(0|\+84)\d{9,10}$/", $number);
   }
@@ -154,12 +169,6 @@ class Signup extends Controller {
   private function _isEmail($email) {
     return preg_match("/^\S+@\S+\.\S+$/", $email);
   }
-
-  // public function logout() {
-  //   Session::destroy();
-  //   header('Location: ../login');
-  //   exit;
-  // }
 
 }
 

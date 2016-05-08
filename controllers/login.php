@@ -4,13 +4,14 @@ class Login extends Controller {
 
   public function __construct() {
     parent::__construct();
+    $this->view->js = 'views/login/js/script.js';
     Session::init();
   }
 
   public function index() {
     $logged = Session::get('loggedIn');
     if ($logged == true) {
-      header('Location: ./index');
+      header('location: '.URL);
       exit;
     }
 
@@ -33,20 +34,20 @@ class Login extends Controller {
       Session::set('userId',$result[0]['id']);
       //End Duong Tran
       if ($result[0]['role'] == 'admin') {
-        header('location: ../dashboard');
+        header('location: '.URL.'dashboard');
       } else {
-        header('location: ../index');
+        header('location: '.URL);
       }
 
     } else {
-      header('location: ../login');
-      // TODO: return login failed
+      $this->view->err = 'Địa chỉ email hoặc mật khẩu không đúng';
+      $this->index();
     }
   }
 
   public function logout() {
     Session::destroy();
-    header('Location: ../login');
+    header('location: '.URL.'login');
     exit;
   }
 
