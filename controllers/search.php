@@ -22,6 +22,8 @@ class Search extends Controller {
       $this->view->lstHouse = (empty($content))
         ? $this->_searchOption()
         : $this->_searchContent($_GET['content']);
+    } else {
+      $this->view->lstHouse = $this->_searchOption();
     }
     // $this->view->lstHouse = $this->model->selectAll();
     $this->index();
