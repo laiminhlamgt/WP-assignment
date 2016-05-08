@@ -11,7 +11,7 @@ if (isset($this->isContainSlider) && $this->isContainSlider) {
   echo '<link rel="stylesheet" type="text/css" href="'.URL.'public/css/owl.carousel.css">';
   echo '<link rel="stylesheet" type="text/css" href="'.URL.'public/css/owl.theme.css">';
   echo '<link rel="stylesheet" type="text/css" href="'.URL.'public/css/owl.transitions.css">';
-  echo '<script src="'.URL.'public/js/owl.carousel.min.js"></script>';
+  // echo '<script src="'.URL.'public/js/owl.carousel.min.js"></script>';
 }
 
  ?>
@@ -25,7 +25,7 @@ if (isset($this->isContainSlider) && $this->isContainSlider) {
 <script src="<?php echo URL; ?>public/js/jquery-1.12.2.min.js" charset="utf-8"></script>
 <script src="<?php echo URL; ?>public/js/jquery.secret-source.min.js" charset="utf-8"></script>
 <script src="<?php echo URL; ?>public/dist/js/bootstrap.min.js" charset="utf-8"></script>
-
+<script src="<?php echo URL; ?>public/js/owl.carousel.min.js"></script>
 <script src="<?php echo URL; ?>public/js/image.js" charset="utf-8"></script>
 
 <?php
