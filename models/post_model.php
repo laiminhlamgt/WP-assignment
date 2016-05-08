@@ -79,8 +79,8 @@ class PostModel extends Model {
     return $this->db->insert('house', $bindValue);
   }
 
-  public function getHouse($postId, $userId) {
-    if($userId > 0)
+  public function getHouse($postId, $userId, $role) {
+    if($role != 'admin')
     {
       $sql = 'SELECT * FROM house WHERE id=:id AND user_id=:user_id AND active=1';
       $bindValue = array(

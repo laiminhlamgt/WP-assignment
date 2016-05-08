@@ -126,7 +126,7 @@ function EditPost(id) {
     }
     else
     {
-        newwindow=window.open(Define_URL + 'post/edit?dashboard=true&userId=0&postId=' + id,'Create Post','height=500,width=1000');
+        newwindow=window.open(Define_URL + 'post/edit?dashboard=true&postId=' + id,'Create Post','height=500,width=1000');
        if (window.focus) {newwindow.focus()}
         return false;
     }

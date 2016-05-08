@@ -256,7 +256,7 @@ class Post extends Controller {
     }
 
     $this->setExistParamInUrl(true);
-    $house = $this->model->getHouse($_GET['postId'], SESSION::get('userId'));
+    $house = $this->model->getHouse($_GET['postId'], SESSION::get('userId'), SESSION::get('role'));
     if (count($house) > 0) {
       $house = $house[0];
 
